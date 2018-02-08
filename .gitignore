@@ -1,0 +1,16 @@
+# Ignore Files
+
+# Latex auxilary files
+*.aux
+*.log
+*.bbl
+*.out
+*.gz
+*.blg
+*.brf
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Latex output
+*.pdf
