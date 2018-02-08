@@ -1,0 +1,77 @@
+\documentclass[tikz, border=7pt]{standalone}
+
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows,calc}
+
+\definecolor{wheat}{RGB}{245,222,179}
+
+\usepackage[T1]{fontenc}
+
+\begin{document}
+    \pgfdeclarelayer{background}
+    \pgfdeclarelayer{foreground}
+    \pgfsetlayers{background,main,foreground}
+
+    \tikzstyle{sensor}=[draw, fill={rgb,255:red,239;green,230;blue,28}, text width=4em, text centered, minimum height=2em]
+    \tikzstyle{data}=[draw, text centered, minimum height=2.5em, drop shadow, rounded corners]
+
+
+    \def\blockdist{2.3}
+    \def\edgedist{2.5}
+
+    \begin{tikzpicture}
+        \node (pc) [data, fill={rgb,255:red,33;green,144;blue,141}, text width=7em] {Point Clouds, \textbf{D}igital \textbf{S}urface \textbf{M}odel \dots};
+
+        \path (pc.west)+(-3,4) node (oi) [data, text width=2cm, fill={rgb,255:red,101;green,203;blue,94}] {Oriented Images};
+        \path (pc.east)+(4,0) node (sr) [data, text width=2.5cm, fill={rgb,255:red,56;green,88;blue,140}, text=wheat] {Primitives, Meshes};
+        \path (sr.east)+(4,0) node (um) [data, text width=2cm, fill={rgb,255:red,69;green,50;blue,126}, text=wheat] {3D Urban Models};
+        \path (um.east)+(5,0) node (om) [data, text width=2cm, fill={rgb,255:red,68;green,13;blue,83}, text=wheat] {Output Model};
+
+        \path (oi.west)+(-4,0) node (camera) [sensor] {Camera};
+        \path (camera.south |- pc) node (lidar) [sensor] {\textbf{LI}ght \textbf{D}etection \textbf{A}nd \textbf{R}anging};
+        \path (um.north)+(0,6) node (human) [sensor] {Human Operator};
+
+        \path[draw, ->] (camera.east) -- node [align=center] {Aquired\\ Signal} (oi.west);
+        \path[draw, ->] (oi.355) -| ($(oi.355) ! .5 ! (pc.165)$) node [left, text width=4em, align=center] {Photo-\\gram-\\metry} |- (pc.165);
+        \path[draw, ->, red, dash dot] (human.165) -| ($(human.165) ! .7 ! ($(oi.355) ! .5 ! (pc.165)$)$) |- node [above left, text width=6em, align=center] {Feature\\ Points Intake} ($(oi.355) ! .5 ! (pc.165)$);
+        \path[draw, ->] (oi.5)  node [right=2cm, text width=6em, align=center] {Primitive Extraction} -| ($(oi.5) ! .8 ! (sr.170)$) |- (sr.170);
+        \path[draw, ->, red, dash dot] (human.180) -| ($(human.180) ! .7 ! ($(oi.5) ! .5 ! (sr.170)$)$) node [right, text width=3em, align=center] {Edge Intake} |- ($(oi.5) ! .8 ! (sr.170)$);
+        \path[draw, ->] (lidar.east) -- node [align=center] {Aquired\\ Signal} (pc.west);
+        \path[draw, ->] (pc.east) -- node [below, text width=6em, align=center] {Surface Recontruction} (sr.west);
+        \path[draw, ->] (sr.east) -- node [below, text width=6em, align=center] {Building Modeling} (um.west);
+        \path[draw, ->, red, dash dot] (human.190) -| node [below=2cm, text width=7em, align=center] {Topology\\Intake} ($(sr) ! .5 ! (um)$);
+        \path[draw, ->] (um.east) -- node [below, text width=7em, align=center] {Post-processing} (om.west);
+        \path[draw, ->, red, dash dot] (human.5) -| ($(um) ! .5 ! (om)$);
+
+        \path ($(human) !.5! (om)$) node (here) [circle, fill=red, text width=1cm, align=center, text=white] {\textbf{We are here}};
+        \path (here) node (double) [circle, line width=1mm, draw=red, minimum size=2cm] {};
+
+        \begin{pgfonlayer}{background}
+            \path ($(um)!.65!(om)$) node (temp) {};
+
+            \path (camera.west |- human.north)+(-1,1) node (prsa) {};
+            \path (temp.east |- lidar.south)+(+0.5,-0.5) node (prsb) {};
+
+            \path (camera.west |- human.north)+(-0.3,0.3) node (cva) {};
+            \path (temp.east |- lidar.south)+(+0.3,-0.3) node (cvb) {};
+
+            \path (pc.west |- human.north)+(-0.15,0.15) node (cga) {};
+            \path (temp.east |- lidar.south)+(+0.15,-0.15) node (cgb) {};
+
+            \path[fill=purple!20, rounded corners, draw=black!50, dashed]
+                (prsa) rectangle (prsb);
+
+            \path (prsa.south east)+(.5,-.1) node  {P\&RS};
+
+            \path[fill=yellow!20, fill opacity=.7, rounded corners, draw=black!50, dashed]
+                (cva) rectangle (cvb);
+            \path (cva.south east)+(.5,-.1) node  {CV};
+
+            \path[fill=green!20, fill opacity=.5, rounded corners, draw=black!50, dashed]
+                (cga) rectangle (cgb);
+            \path (cga.south east)+(.5,-.1) node  {CG};
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{document}
