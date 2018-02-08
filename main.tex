@@ -1,0 +1,110 @@
+\documentclass[portrait, a0paper]{baposter}
+
+\usepackage{poster_style}
+
+\begin{document}
+    \begin{poster}%
+    {
+        grid=false,
+        colspacing=1em,
+        bgColorOne=white,
+        bgColorTwo=white,
+        borderColor=IGNGrey,
+        headerColorOne=IGNGrey,
+        headerColorTwo=IGNGrey,
+        headerFontColor=white,
+        boxColorOne=white,
+        boxColorTwo=white,
+        columns=5,
+        textborder=rounded,
+        eyecatcher=true,
+        headerborder=closed,
+        headerheight=0.15\textheight,
+        headershape=rounded,
+        headerfont={},
+        textfont={\color{IGNDarkGrey}},
+        boxshade=plain,
+        background=none,
+        linewidth=1pt
+    }
+    {
+        \includegraphics[width=2.2cm]{theme/ign_logo}
+    }
+    {
+        \color{IGNDarkGrey}{
+            \huge 3D Building model self diagnostic for urban scene reconstruction evaluation
+        }
+    }
+    {
+        \color{IGNDarkGrey}{
+            \begin{tabular}{c}
+                Oussama \textsc{Ennafii} \\
+                \small nathan.piasco@ign.fr
+            \end{tabular}
+        }
+    }
+    {
+      \includegraphics[width=2.2cm]{theme/paris_est_logo}
+    }
+
+        \TransitionBox{motivation}{column=0, span=5}{\textbf{Motivation:} }{
+        }
+
+        \StandardBox{context}{column=0, span=2, below=motivation}{Context}{
+        	\textbf{\color{IGNGreen}{Objectif:}} .
+        }
+
+        \InvisibleBox{situation}{column=2, span=3, below=motivation}{We are at the junction between the human interaction and the urban model correction phase}{
+            \begin{center}
+                \includestandalone[mode=buildnew, width=\textwidth]{situation}
+            \end{center}
+        }
+
+        \TransitionBox{formulation}{column=0, span=5, below=situation}{\textbf{Problem Formulation:} }{
+        }
+
+        \StandardBox{classification}{column=0, span=2, below=formulation}{Classification problem}{
+            \begin{itemize}
+                \item
+            \end{itemize}
+        }
+
+        \InvisibleBox{taxonomy}{column=2, span=3, below=formulation}{Mindmap summarizing the proposed taxonomy}{
+            \begin{center}
+                \includestandalone[mode=buildnew, width=\textwidth]{mind_map}
+            \end{center}
+        }
+
+        \TransitionBox{results}{column=0, span=5, below=taxonomy}{\textbf{Results Insights:} }{
+        }
+
+        \StandardBox{smth}{column=3, span=2, below=results}{SMTH}{
+            \begin{itemize}
+                \item
+            \end{itemize}
+        }
+
+        \ReferencesBox{references}{column=0, span=4, below=smth}{\textbf{References}}{
+            \setlength{\columnseprule}{0.1pt}
+            \begin{multicols*}{3}
+            	\renewcommand{\refname}{\vspace{-0.8em}}
+        		\bibliographystyle{plain}
+        	    \tiny \bibliography{references}
+        	\end{multicols*}
+        }
+
+        \InvisibleBox{qr}{column=4, span=1, below=smth}{}{
+            \begin{center}
+                \includegraphics[width=\textwidth]{qr}
+            \end{center}
+        }
+
+        \InvisibleBox{event}{column=0, span=5, below=qr}{}{
+            \begin{tikzpicture}
+                \node[rectangle, minimum width=\textwidth]{
+                    \footnotesize{Journées de la Recherche 2018}
+                };
+            \end{tikzpicture}
+        }
+    \end{poster}
+\end{document}
