@@ -1,42 +1,35 @@
 \usepackage[utf8]{inputenc}
 
+\usepackage{natbib}
+\setlength{\bibsep}{0.0mm}
+
+\usepackage[font={small, color=IGNDarkGrey}, figurename=Fig., tablename=Tab., labelfont={bf, color=IGNGreen}]{caption}
+
 \usepackage{enumitem}
-
-\usepackage{calc}
-
-\usepackage{xcolor}
-
 \usepackage{graphicx}
 \usepackage{rotating}
 
 \usepackage{multirow}
 \usepackage{multicol}
 
-\usepackage{subfig}
-
 \usepackage{standalone}
 
-\usepackage{array}
-\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{booktabs}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 
 \usepackage{relsize}
 
-\usepackage{bm}
 \usepackage{url}
 
 
-
-\renewcommand{\rmdefault}{phv}
-\renewcommand{\sfdefault}{phv}
 \renewcommand{\baselinestretch}{.75}
 
 \graphicspath{{./images/}}
 
 %% Multicolumn configuration
-\setlength{\columnsep}{1em}
+\setlength{\columnsep}{.5em}
 \setlength{\columnseprule}{0mm}
 
 %% Colors
@@ -46,7 +39,9 @@
 
 \newcommand\InvisibleBox[4]
 {
-    \begin{posterbox}[name=#1,#2,
+    \begin{posterbox}[
+        name=#1,#2,
+        headerfont=\small,
         borderColor=white,
         headerFontColor=IGNDarkGrey,
         headerColorOne=white,
@@ -54,20 +49,27 @@
     \end{posterbox}
 }
 
-\newcommand\TransitionBox[4]{
-    \begin{posterbox}[name=#1,#2,
+\newcommand\TransitionBox[3]{
+    \begin{posterbox}[
+        name=#1,
+        column=0,
+        span=6,
+        #2,
+        headerfont=\normalsize,
         headershape=roundedright,
         headerColorOne=IGNGrey,
         headerColorTwo=IGNGrey,
         headerborder=none,
-        textborder=none,
-        headerFontColor=white
-        ]{#3}{#4}
+        headerFontColor=white,
+        textborder=none
+        ]{#3}{}
     \end{posterbox}
 }
 
 \newcommand\ReferencesBox[4]{
-    \begin{posterbox}[name=#1,#2,
+    \begin{posterbox}[
+        name=#1,#2,
+        headerfont=\scshape,
         headerColorOne=IGNGrey,
         headerColorTwo=IGNGrey,
         headerborder=none,
@@ -78,7 +80,9 @@
 }
 
 \newcommand\StandardBox[4]{
-    \begin{posterbox}[name=#1,#2,
+    \begin{posterbox}[
+        name=#1,#2,
+        headerfont=\bf,
         boxColorOne=white,
         headerFontColor=IGNGreen,
         headerColorOne=white,
