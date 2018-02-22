@@ -1,5 +1,7 @@
 \usepackage[utf8]{inputenc}
 
+\usepackage{enumitem}
+
 \usepackage{calc}
 
 \usepackage{xcolor}
@@ -29,20 +31,13 @@
 
 \renewcommand{\rmdefault}{phv}
 \renewcommand{\sfdefault}{phv}
+\renewcommand{\baselinestretch}{.75}
 
 \graphicspath{{./images/}}
 
 %% Multicolumn configuration
-\setlength{\columnsep}{1.5em}
+\setlength{\columnsep}{1em}
 \setlength{\columnseprule}{0mm}
-
-%% List Compressor
-\newcommand{\compresslist}{%
-    \setlength{\itemsep}{1pt}%
-    \setlength{\parskip}{0pt}%
-    \setlength{\parsep}{0pt}%
-}
-
 
 %% Colors
 \definecolor{IGNGreen}{RGB}{163, 210,  11}
@@ -89,6 +84,6 @@
         headerColorOne=white,
         headerborder=closed,
         headerColorTwo=white,
-        textborder=rounded]
+        textborder=roundedsmall]
     {#3}{#4}\end{posterbox}
 }
