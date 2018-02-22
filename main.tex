@@ -5,9 +5,8 @@
 \begin{document}
     \begin{poster}%
     {
+        grid=false,
         eyecatcher=true,
-        grid=true,
-        colspacing=1em,
         bgColorOne=white,
         bgColorTwo=white,
         borderColor=IGNGrey,
@@ -16,44 +15,53 @@
         headerFontColor=white,
         boxColorOne=white,
         boxColorTwo=white,
+        colspacing=.5em,
         columns=6,
         textborder=rounded,
-        eyecatcher=true,
         headerborder=closed,
-        headerheight=0.15\textheight,
+        headerheight=0.12\textheight,
         headershape=rounded,
-        headerfont=\scshape,
         textfont={\color{IGNDarkGrey}},
         boxshade=plain,
         background=none,
         linewidth=1pt
     }
-    {
-        \includegraphics[width=2.2cm]{theme/ign_logo}
-    }
+    {}
     {
         \color{IGNDarkGrey}
-        3D Building model self diagnostic for urban scene reconstruction evaluation
+        3D Building model self diagnostic\\ for automatic urban scene reconstruction evaluation
     }
     {
         \vspace{.5cm}
-        \color{IGNDarkGrey}{
-            \begin{tabular}{c}
-                \textsc{oussama.ennafii@ign.fr}
-            \end{tabular}
-        }
+        \color{IGNDarkGrey}
+        \begin{tabular}{c}
+            \textsc{Oussama Ennafii}\\
+            \small oussama.ennafii@ign.fr
+        \end{tabular}
     }
     {
-      \includegraphics[width=3cm]{theme/paris_est_logo}
+        \begin{tabular}{c}
+            \includegraphics[width=2.2cm]{theme/ign_logo}\\~\\
+            \includegraphics[width=2.2cm]{theme/paris_est_logo}
+        \end{tabular}
     }
 
-        \TransitionBox{motivation}{column=0, span=6}{\textbf{Motivation:} }{
+        \TransitionBox{motivation}{}{{\large \sc Motivation:} Why do we need automatic scene evaluation?}
+
+        \StandardBox{auto_evaluation}{column=2, span=1, row=.03}{Self Diagnostic}{
+            Can be used for:
+            \begin{itemize}[label=--, leftmargin=1.5em]
+                \item Change detection;
+                \item Urban model correction;
+                \item Urban reconstruction method evaluation;
+                \item Crowd reconstruction quality assessment.
+            \end{itemize}
         }
 
-        \StandardBox{context}{column=0, span=2, row=.03}{\bf Context}{
-            \begin{itemize}[label=--, leftmargin=*]
+        \StandardBox{context}{column=0, span=2, aligned=auto_evaluation, bottomaligned=auto_evaluation}{Context}{
+            \begin{itemize}[label=, leftmargin=*]
                 \item Urban models have a wide range application range~\cite{Biljecki2015};
-                \item Automatic urban modeling is an active research area, but {\color{IGNGreen}not yet operational};
+                \item Automatic urban modeling is an active research area~\cite{Musialski2012}, but {\color{IGNGreen}not yet operational};
                 \item Example:
                 \begin{itemize}[label=$\rightarrow$]
                     \item The IGN solution Bati3D takes more ressources to correct manually than an interactive reconstruction.
@@ -61,40 +69,133 @@
             \end{itemize}
         }
 
-        \StandardBox{auto_evaluation}{column=2, span=1, aligned=context, bottomaligned=context}{\bf Self Diagnostic}{
-            Can be used for:
-            \begin{itemize}[label=--, leftmargin=1.5em]
-                \item Change detection;
-                \item Urban reconstruction evaluation;
-                \item Crowd reconstruction quality assessment.
-            \end{itemize}
-        }
-
-        \InvisibleBox{situation}{column=3, span=3, aligned=context, bottomaligned=context}{ Situation}{
+        \StandardBox{situation}{column=3, span=3, aligned=auto_evaluation}{Overall perspective}{
             \includestandalone[mode=buildnew, width=\textwidth]{situation}
+            \captionof{figure}{3D urban modelisation pipeline.}
         }
 
-        \ReferencesBox{references}{column=0, span=5, row=.9}{\textbf{References}}{
-            \setlength{\columnseprule}{0.1pt}
-            \begin{multicols*}{3}
-            	\renewcommand{\refname}{\vspace{-0.8em}}
-        		\bibliographystyle{plain}
-        	    \tiny \bibliography{references}
-        	\end{multicols*}
+        \StandardBox{applications}{column=0, span=3, below=context}{Urban models applications}{
+            \begin{center}
+                \begin{tabular}{l l l}
+                    \toprule
+                        Planning & Simulation & Visualization \\
+                        \midrule
+                        City planning & Micro climates & Architecture \\
+                        Emergency intervention & Wave propagation & Cadastre \\
+                        Home decoration & Run-off water & Tourism \\
+                        Communication network & Military intervention & Video games \\
+                        \bottomrule
+                    \end{tabular}
+                \captionof{table}{\label{tab::3d_applications} Some of the main thematic applications of $3D$ urban reconstruction\cite{Biljecki2015, Scholze2002}.}
+            \end{center}
         }
-
-        \InvisibleBox{info}{column=5, span=1, aligned=references}{}{
-            \begin{itemize}[label=--, leftmargin=*]
-                \item IGN funded;
-                \item Cl\'ement Mallet \& Florent Lafarge codirection;
-                \item Arnaud Le Bris supervision.
+        \StandardBox{state_art}{column=3, span=3, below=situation, bottomaligned=applications}{State of the art}{
+            Urban models quality assessment methods can be divided as follows:
+            \begin{itemize}[label=--, leftmargin=1em]
+                \item Methods that gives {\color{IGNGreen} geometric indexes} (for instance, heigh accuracy, completness \dots) by comparing to a {\color{IGNGreen} highier precision model}~\cite{Kaartinen2005, Zeng2014, Voegtle2003, Henricsson1997}.
+                \item Methods that outputs end user oriented {\color{IGNGreen} topological and geometric error} using {\color{IGNGreen}remote sensing data} (LiDAR, DSM, Orthoimage)~\cite{Akca2010, OudeElberink2010, Boudet2006, Michelin2013}.
             \end{itemize}
+        }
+
+        \TransitionBox{formul}{below=applications}{{\large \sc Problem formulation:} We want to build the least reference dependent possible automatic method for urban model diagnostic.}
+
+        \StandardBox{taxonomy}{column=0, span=4, row=.372}{Error taxonomy}{
+            \includestandalone[mode=buildnew, width=\textwidth]{mind_map}
+        }
+
+        \StandardBox{errors}{column=4, span=2, aligned=taxonomy}{Error description}{
+            \begin{enumerate}[label=(\roman*).]
+                \item Unqualified Building Errors; not be taken into consideration:
+                \begin{itemize}[label=-, leftmargin=.5em]
+                    \item Half Building: partially reconstructed,
+                    \item Changed Building: the building has changed,
+                    \item Occlusion: occluded by vegetation,
+                    \item Unknown: unverifiable shape;
+                \end{itemize}
+                \item Building Errors; building wise ($LoD0 \cup LoD1$) errors:
+                \begin{itemize}[label=-, leftmargin=.5em]
+                    \item Under Segmentation two or more buildings grouped into one,
+                    \item Over segmentation: one building segmented into two or more buildings,
+                    \item Footprint: wrong footprint,
+                    \item Height: wrong building height;
+                \end{itemize}
+                \item Facet Errors; errors affecting only a facet:
+                \begin{itemize}[label=-, leftmargin=.5em]
+                    \item Under Segmentation: two facets or more grouped into one,
+                    \item Over Segmentation: one facet segemented into two or more facets,
+                    \item Imprecise Segmentation: imprecise facet edges,
+                    \item Slope: imprecise slope.
+                \end{itemize}
+            \end{enumerate}
+        }
+
+        \StandardBox{info}{column=4, span=2, below=errors}{Informations}{
+        \begin{itemize}[label=--, leftmargin=*]
+            \item IGN funded;
+            \item Cl\'ement Mallet \& Florent Lafarge codirection;
+            \item Arnaud Le Bris supervision.
+        \end{itemize}
+        }
+
+        \StandardBox{results}{column=0, span=4, below=taxonomy, bottomaligned=info}{Results}{
+            \begin{multicols}{3}
+                \captionof{table}{\label{tab::binary_rf_1000_4}Binary classification results using a Random Forests (trees: $1000$, depth: $4$).}
+                \begin{tabular}{c c c}
+                    \toprule
+                    \multicolumn{3}{c}{\textbf{Cross validation results}}\\
+                    \midrule
+                    Metric & Max & Min \\
+                     \midrule
+                    train scores & $1.000$ & $0.9911$ \\
+                     \midrule
+                    test scores & $1.000$ & $0.8775$\\
+                     \bottomrule
+                \end{tabular}
+
+                \captionof{table}{\label{tab::binary_rf_1000_4}Binary classification results using a Random Forests (trees: $1000$, depth: $4$).}
+                \begin{tabular}{c c c}
+                    \toprule
+                    \multicolumn{3}{c}{\textbf{Cross validation results}}\\
+                    \midrule
+                    Metric & Max & Min \\
+                     \midrule
+                    train scores & $1.000$ & $0.9911$ \\
+                     \midrule
+                    test scores & $1.000$ & $0.8775$\\
+                     \bottomrule
+                \end{tabular}
+
+                \captionof{table}{\label{tab::binary_rf_1000_4}Binary classification results using a Random Forests (trees: $1000$, depth: $4$).}
+                \begin{tabular}{c c c}
+                    \toprule
+                    \multicolumn{3}{c}{\textbf{Cross validation results}}\\
+                    \midrule
+                    Metric & Max & Min \\
+                     \midrule
+                    train scores & $1.000$ & $0.9911$ \\
+                     \midrule
+                    test scores & $1.000$ & $0.8775$\\
+                     \bottomrule
+                \end{tabular}
+            \end{multicols}
+        }
+
+        \ReferencesBox{references}{column=0, span=5, below=info}{\bf{References}}{
+            \setlength{\columnseprule}{0.1pt}
+            \begin{multicols}{3}
+                \renewcommand{\section}[2]{}
+                \bibliographystyle{abbrv}
+                \tiny \bibliography{references}
+            \end{multicols}
+        }
+
+        \InvisibleBox{qr}{column=5, span=1, aligned=references}{}{
             \begin{center}
                 \includegraphics[width=\textwidth]{qr}
             \end{center}
         }
 
-        \InvisibleBox{event}{column=0, span=6, row=.99}{}{
+        \InvisibleBox{event}{column=2, span=2, row=.985}{}{
             \begin{tikzpicture}
                 \node[rectangle, minimum width=\textwidth]{
                     \footnotesize{Journées de la Recherche 2018}
