@@ -11,6 +11,10 @@
 *.toc
 *.fls
 *.fdb_latexmk
+*.snm
+*.nav
+*.run.xml
+
 
 # Latex output
 *.pdf

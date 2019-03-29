@@ -1,0 +1,78 @@
+\documentclass[10pt, export]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+    
+\usepackage{standalone}
+    
+\usepackage[acronym]{glossaries}
+    
+\usepackage{enumitem}
+    
+\usepackage{xcolor}
+    
+\usepackage{multirow}
+\usepackage{multicol}
+    
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{booktabs, colortbl}
+    
+\usepackage{siunitx}
+\usepackage{mathrsfs, amsmath}
+    
+\usepackage{graphicx}
+\usepackage[font={small, color=IGNDarkGreen}, labelformat=empty]{caption}
+\usepackage{subcaption}
+\DeclareCaptionFont{tiny}{\tiny}
+% \captionsetup[subtable]{labelfont={tiny, bf},textfont=normalfont,justification=raggedright}
+\captionsetup[subfigure]{labelfont={tiny, bf},textfont=tiny,justification=raggedright}
+\usepackage{adjustbox}
+
+\usepackage{pifont, textcomp}
+\newcommand{\cmark}{{\color{green} \ding{51}}}%
+\newcommand{\xmark}{{\color{red} \ding{55}}}%
+    
+\usepackage{hyperref}
+    
+\usepackage[
+        mcite,
+        backend=bibtex,
+        style=verbose,
+        citestyle=authoryear,
+        bibstyle=numeric,
+        sorting=none,
+        autocite=footnote,
+        maxnames=2,
+        hyperref=true,
+        natbib=true,
+        abbreviate=true
+    ]{biblatex}
+\bibliography{references}
+\setbeamerfont{footnote}{size=\tiny}
+
+
+\usetheme{ign}
+
+
+\newacronym{acr::lod}{LoD}{Level of Detail}
+\newacronym{acr::elod}{eLoD}{evaluation Level of Detail}
+\newacronym{acr::lidar}{LiDAR}{Light Detection and Ranging}
+\newacronym{acr::dsm}{DSM}{Digital Surface Model}
+\newacronym{acr::gui}{GUI}{Graphical User Interface}
+
+\title{Semantic 3D building model evaluation}
+\subtitle{}
+\institute[LaSTIG STRUDEL]{Univ. Paris Est, LaSTIG STRUDEL, IGN, ENSG}
+\date{\today}
+\author[O.Ennafii]{Oussama Ennafii}
+
+\begin{document}
+    \begin{frame}[plain]
+        \titlepage{}
+    \end{frame}
+
+    \begin{frame}{}
+        
+    \end{frame}
+\end{document}
