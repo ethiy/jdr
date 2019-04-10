@@ -22,11 +22,9 @@
 \usepackage{mathrsfs, amsmath}
     
 \usepackage{graphicx}
-\usepackage[font={small, color=IGNDarkGreen}, labelformat=empty]{caption}
+\usepackage[font={small, color=IGNGrey}, labelformat=empty]{caption}
 \usepackage{subcaption}
 \DeclareCaptionFont{tiny}{\tiny}
-% \captionsetup[subtable]{labelfont={tiny, bf},textfont=normalfont,justification=raggedright}
-\captionsetup[subfigure]{labelfont={tiny, bf},textfont=tiny,justification=raggedright}
 \usepackage{adjustbox}
 
 \usepackage{tikz}
@@ -83,20 +81,20 @@
                     \begin{subfigure}{.45\textwidth}
                         \begin{center}
                             \includegraphics[height=1.5cm]{images/difference_mesh_model/pc_building_bercy}
-                            \caption{3D mesh representing a building surface}
+                            \caption{3D point cloud of a building ($\approx 1.2\mathrm{e}{5}$ points).}
                         \end{center}
                     \end{subfigure}
-                    \\
                     \begin{subfigure}{.45\textwidth}
                         \begin{center}
                             \includegraphics[height=1.5cm]{images/difference_mesh_model/bercy_building_mesh_1_e5}
-                            \caption{3D mesh representing a building surface}
+                            \caption{3D mesh representing a building surface ($\approx 9.9\mathrm{e}{4}$ triangles).}
                         \end{center}
                     \end{subfigure}
-                    \begin{subfigure}{.45\textwidth}
+                    \\
+                    \begin{subfigure}{\textwidth}
                         \begin{center}
-                            \includestandalone[mode=buildnew, height=1.51cm]{ground_truth_model}
-                            \caption{Building 3D polyhedral model}
+                            \includestandalone[mode=buildnew, height=3cm]{ground_truth_model}
+                            \caption{Building 3D polyhedral model (1, 912 triangles).}
                         \end{center}
                     \end{subfigure}
                 \end{center}
