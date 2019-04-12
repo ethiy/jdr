@@ -121,7 +121,7 @@
                 \end{itemize}
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                     \item<6-> Semantic errors independent from \textbf{reconstruction methods} and \textbf{urban scenes}.
-                    \item<7-> \textbf{Transferability}, and hence scallability, of the evaluation method.
+                    \item<7-> \textbf{Transferability}, and hence scalability, of the evaluation method.
                 \end{itemize}
             }
         \end{frame}
@@ -298,7 +298,7 @@
                 \end{table}
             }
         \end{frame}
-        \begin{frame}{Ablation study on Elancourt}
+        \begin{frame}{Ablation study: Elancourt example}
             \begin{table}
                 \scriptsize
                 \begin{center}
@@ -332,7 +332,12 @@
                 \end{center}
             \end{table}
         \end{frame}
-        \begin{frame}{Transferability study}
+        \begin{frame}{Scalability study: possible experimentations}
+            \begin{figure}
+                \includestandalone[mode=buildnew, height=.7\textheight]{scalabitity_graph}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{Transferability and Generalization of predictions}
             \begin{table}
                 \scriptsize
                 \begin{center}
@@ -340,7 +345,7 @@
                         \hline
                         &&\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
                         \hline
-                        \multirow{6}{*}{\rotatebox{90}{Transferability}}&El. $\rightarrow$ Na. &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
+                        \multirow{6}{*}{\rotatebox{90}{Transf.}}&El. $\rightarrow$ Na. &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
                         &El. $\rightarrow$ P-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
                         &Na. $\rightarrow$ P-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{black} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{black} &\cellcolor{Zero}\\
                         &Na. $\rightarrow$ El.  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
@@ -355,6 +360,11 @@
                     \caption{The color indicates the change magnitude: \textcolor{Moins4}{$\blacksquare$}: $[-45,-35\%[$-- \textcolor{Moins3}{$\blacksquare$}: $[-35,-25\%[$ -- \textcolor{Moins2}{$\blacksquare$}: $[-25,15\%[$-- \textcolor{Moins1}{$\blacksquare$}: $[-15, 5\%[$ -- $\square$: $[-5,5\%[$-- \textcolor{Plus1}{$\blacksquare$}: $[5,15\%[$ -- \textcolor{Plus2}{$\blacksquare$}: $[15,25\%]$ -- $\blacksquare$: cannot be computed.}
                 \end{center}
             \end{table}
+        \end{frame}
+        \begin{frame}{Representativeness study: F-score stability}
+            \begin{figure}
+                \includestandalone[mode=buildnew, height=.7\textheight]{f-scores_f3_repr}
+            \end{figure}
         \end{frame}
         \begin{frame}{Some failure cases on Elancourt}
             \begin{figure}
