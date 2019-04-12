@@ -1,0 +1,31 @@
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+
+\usepackage{tikz}
+\usetikzlibrary{trees, decorations.pathreplacing}
+
+\begin{document}
+
+    \tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+    \tikzstyle{level 2}=[level distance=3.5cm, sibling distance=3.5cm]
+    \tikzstyle{level 3}=[level distance=4cm, sibling distance=4cm]
+    \tikzstyle{level 4}=[level distance=3cm, sibling distance=.75cm]
+    
+    \tikzstyle{bag} = [text width=4em, text centered]
+    \tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+    
+    \begin{tikzpicture}[grow=right]
+        \node[bag] (input) {\textsc{Input}}
+            child {
+                node[end, label=right:\textsc{Unqualifiable}] (unqualifiable) {}
+            }
+            child {
+                node[bag] (qualifiable) {Qualifiable}
+            };
+            
+        \path (qualifiable.north) + (-1.5,1) node (qualifiability_max) {$\textit{finesse}=0$};
+
+        \draw[dashed, orange, ultra thick] (unqualifiable.south) + (-1.5,-1) -- (qualifiability_max);
+    \end{tikzpicture}
+\end{document}
+    
