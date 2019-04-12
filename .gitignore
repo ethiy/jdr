@@ -14,7 +14,7 @@
 *.snm
 *.nav
 *.run.xml
-
+*blx.bib
 
 # Latex output
 *.pdf
