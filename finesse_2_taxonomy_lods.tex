@@ -37,9 +37,9 @@
 		edge from parent
 	};
 	
-	\path (qualifiable |- valid.north) + (-1.5,1) node (qualifiability_max) {$\textit{finesse}=0$};
-	\path (valid.north) + (-.75,1) node (correctness_max) {$\textit{finesse}=1$};
-	\path (facet_errors |- valid.north) + (-1.5,1) node (families_max) {$\textit{finesse}=2$};
+	\path (qualifiable |- valid.north) + (-1.5,1) node (qualifiability_max) {$\texttt{finesse}=0$};
+	\path (valid.north) + (-.75,1) node (correctness_max) {$\texttt{finesse}=1$};
+	\path (facet_errors |- valid.north) + (-1.5,1) node (families_max) {$\texttt{finesse}=2$};
 	\path (facet_errors |- input) + (-1.5,0) node (lod_max) {};
 	\path (building_errors |- input) + (2,0) node (lod_min) {};
 	
