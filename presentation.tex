@@ -31,6 +31,8 @@
 \usepackage{tikz}
 \usetikzlibrary{calc, 3d, shapes, arrows, shadows, decorations}
 
+\usepackage{pgfplots, pgfplotstable}
+
 
 \usepackage{pifont, textcomp}
 \newcommand{\cmark}{{\color{green} \ding{51}}}%
@@ -111,18 +113,19 @@
         \begin{frame}{Motivation}
             \only<1-4>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                    \item<1-> Automatic urban modeling: an active research area~\citep{Musialski2012};
-                    \item<2-> Results seamless but lack generality and often erroneous~\citep{rottensteiner2014results};
+                    \item<1-> Automatic urban modeling: an active research area \citep{Musialski2012};
+                    \item<2-> Results seamless but lack generality and often erroneous \citep{rottensteiner2014results};
                     \begin{itemize}[label=$\longrightarrow$]
                         \item<3-> labourious manual corrections.
                     \end{itemize}
-                    \item<4-> Urban 3D model semantic diagnostic \textcolor{purple}{not well studied}~\citep{nguatem2017modeling};
+                    \item<4-> Urban 3D model semantic diagnostic \textcolor{purple}{not well studied} \citep{boudet2006supervised, Michelin2013};
                 \end{itemize}
             }
             \only<5->{
-                \begin{itemize}[label=Goal $\longrightarrow$, font=\color{purple}, leftmargin=2cm]
-                    \item<5-> Detect and describe semantic errors that affect building 3D models.
-                \end{itemize}
+                \begin{block}{\textcolor{purple}{Goal}}
+                    Detect and describe semantic errors that affect building 3D models.
+                \end{block}
+                ~\\
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                     \item<6-> Semantic errors independent from \textbf{reconstruction methods} and \textbf{urban scenes}.
                     \item<7-> \textbf{Transferability}, and hence scalability, of the evaluation method.
@@ -163,36 +166,36 @@
             \begin{frame}{\acrshort{acr::lod}: a brief reminder}
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildnew, width=\textwidth]{lods}
+                        \includestandalone[mode=buildmissing, width=\textwidth]{lods}
                     \end{center}
                     \caption{Basic \acrshort{acr::lod} classification used in Computer Vision.}
                 \end{figure}
             \end{frame}    
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 0$)}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, width=\textwidth]{finesse_0_taxonomy}
+                    \includestandalone[mode=buildmissing, width=\textwidth]{finesse_0_taxonomy}
                 \end{figure}
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 1$)}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, width=\textwidth]{finesse_1_taxonomy}
+                    \includestandalone[mode=buildmissing, width=\textwidth]{finesse_1_taxonomy}
                 \end{figure}
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 2$)}
                 \only<1>{
                     \begin{figure}
-                        \includestandalone[mode=buildnew, width=\textwidth]{finesse_2_taxonomy}
+                        \includestandalone[mode=buildmissing, width=\textwidth]{finesse_2_taxonomy}
                     \end{figure}
                 }
                 \only<2>{
                     \begin{figure}
-                        \includestandalone[mode=buildnew, width=\textwidth]{finesse_2_taxonomy_lods}
+                        \includestandalone[mode=buildmissing, width=\textwidth]{finesse_2_taxonomy_lods}
                     \end{figure}
                 }
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 3$, $\leq$ \acrshort{acr::lod}-1)}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, width=\textwidth]{finesse_3_bul_taxonomy}
+                    \includestandalone[mode=buildmissing, width=\textwidth]{finesse_3_bul_taxonomy}
                 \end{figure}
             \end{frame}
             \begin{frame}{Building \texttt{atomic} errors: 2.5D overhead reconstruction case}
@@ -231,7 +234,7 @@
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 3$, $\leq$ \acrshort{acr::lod}-2)}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, width=\textwidth]{finesse_3_all_taxonomy}
+                    \includestandalone[mode=buildmissing, width=\textwidth]{finesse_3_all_taxonomy}
                 \end{figure}
             \end{frame}
             \begin{frame}{Facet \texttt{atomic} errors: 2.5D overhead reconstruction case}
@@ -303,36 +306,59 @@
             \end{frame}
     \section{Experiments}
         \begin{frame}{Datasets}
-            \begin{table}
-                \begin{center}
-                    \scriptsize
-                    \begin{tabular}{c c c c}
-                        \toprule
-                        & \textbf{Elancourt} & \textbf{Nantes} & \textbf{Paris-13} \\
-                        \midrule
-                        \# samples & 2009 & 748 & 478 \\
-                        DSM res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
-                        Img. res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
-                        Typology & bi-level + flat roof & dense city center & Haussmann style + high towers \\
-                        \bottomrule
-                    \end{tabular}
-                    \caption{Dataset details.}
-                \end{center}
-            \end{table}
-            \uncover<2->{
+            \only<1-2>{
                 \begin{table}
                     \begin{center}
                         \scriptsize
-                        \begin{tabular}{c c c}
+                        \begin{tabular}{c c c c}
                             \toprule
-                            Geometric & Height based & Image based \\
+                            & \textbf{Elancourt} & \textbf{Nantes} & \textbf{Paris-13} \\
                             \midrule
-                            $\approx$ \SI{0.05}{\second}/building & $\approx$ \SI{1.4}{\second}/building & $>$ \SI{16}{\second}/building \\
+                            \# samples & 2009 & 748 & 478 \\
+                            DSM res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
+                            Img. res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
+                            Typology & bi-level + flat roof & dense city center & Haussmann style + high towers \\
                             \bottomrule
                         \end{tabular}
-                        \caption{Running time per feature type.}
+                        \caption{Urban scenes details.}
                     \end{center}
                 \end{table}
+                \uncover<2>{
+                    \begin{table}
+                        \begin{center}
+                            \scriptsize
+                            \begin{tabular}{c c c}
+                                \toprule
+                                Geometric & Height based & Image based \\
+                                \midrule
+                                $\approx$ \SI{0.05}{\second}/building & $\approx$ \SI{1.4}{\second}/building & $>$ \SI{16}{\second}/building \\
+                                \bottomrule
+                            \end{tabular}
+                            \caption{Running time per feature type.}
+                        \end{center}
+                    \end{table}
+                }
+            }
+            \only<3>{
+                \begin{figure}
+                    \begin{center}
+                        \includestandalone[mode=buildnew, width=.9\textwidth]{dataset}
+                    \end{center}
+                \end{figure}
+            }
+            \only<4>{
+                \begin{figure}
+                    \begin{center}
+                        \includestandalone[mode=buildmissing, height=.7\textheight]{dataset_stats_finesse_2}
+                    \end{center}
+                \end{figure}
+            }
+            \only<5>{
+                \begin{figure}
+                    \begin{center}
+                        \includestandalone[mode=buildmissing, height=.45\textheight]{dataset_stats_finesse_3}
+                    \end{center}
+                \end{figure}
             }
         \end{frame}
         \begin{frame}{Ablation study: Elancourt example}
