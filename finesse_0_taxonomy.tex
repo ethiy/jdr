@@ -1,4 +1,4 @@
-\documentclass[tikz, border=10pt]{standalone}
+\documentclass[tikz]{standalone}
 \usepackage[T1]{fontenc}
 
 \usepackage{tikz}
@@ -21,11 +21,67 @@
             }
             child {
                 node[bag] (qualifiable) {Qualifiable}
+                    child[opacity=0] {
+                        node[bag]{Erroneous}
+                            child[opacity=0] {
+                                node[bag] (building_errors) {Building Errors}
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Under segmentation (\texttt{BUS})}] (b_under) {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Over segmentation (\texttt{BOS})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Imprecise borders (\texttt{BIB})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Inaccurate topology (\texttt{BIT})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Imprecise geometry (\texttt{BIG})}] {}
+                                }
+                                edge from parent
+                            }
+                            child[opacity=0] {
+                                node[bag] (facet_errors) {Facet Errors}
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Under segmentation (\texttt{FUS})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Over segmentation (\texttt{FOS})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Imprecise borders (\texttt{FIB})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Inaccurate topology (\texttt{FIT})}] {}
+                                }
+                                child[opacity=0] {
+                                    node[end, label=right:\textsc{Imprecise geometry (\texttt{FIG})}] {}
+                                }
+                                edge from parent
+                            }
+                            edge from parent
+                        }
+                    child[opacity=0] {
+                        node[end, label=right:\textsc{Valid}] (valid) {}
+                    }
+                edge from parent
             };
             
-        \path (qualifiable.north) + (-1.5,1) node (qualifiability_max) {$\texttt{finesse}=0$};
-
-        \draw[dashed, orange, ultra thick] (unqualifiable.south) + (-1.5,-1) -- (qualifiability_max);
+        \path (qualifiable |- valid.north) + (-1.5,1) node (qualifiability_max) {$\texttt{finesse}=0$};
+        \path (valid.north) + (-.75,1) node[opacity=0] (correctness_max) {$\texttt{finesse}=1$};
+        \path (facet_errors |- valid.north) + (-1.5,1) node[opacity=0] (families_max) {$\texttt{finesse}=2$};
+        \path (b_under |- valid.north) + (-1,1) node[opacity=0] (atomic_max) {$\texttt{finesse}=3$};
+        \path (facet_errors |- input) + (-1.5,0) node (lod_max) {};
+        \path (b_under |- input) + (7.5,0) node (lod_min) {};
+        
+        \draw[dashed, orange, ultra thick] (unqualifiable |- b_under.south) + (-1.5,-1) -- (qualifiability_max);
+        \draw[dashed, green, ultra thick, opacity=0] (valid |- b_under.south) + (-.75,-1) -- (correctness_max);
+        \draw[dashed, purple, ultra thick, opacity=0] (facet_errors |- b_under.south) + (-1.5,-1) -- (families_max);
+        \draw[dashed, blue, ultra thick, opacity=0] (b_under.south) + (-1,-1) -- (atomic_max);
+        
+        \draw[dash dot, ultra thick, opacity=0] (lod_max)  -- (lod_min) node[below, align=left, xshift=-1cm] {\scriptsize LoD-0 $\cup$ LoD-1} node [above, xshift=-.5cm] {\scriptsize LoD-2};
     \end{tikzpicture}
 \end{document}
     
