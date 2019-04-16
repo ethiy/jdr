@@ -1,8 +1,7 @@
-\documentclass[tikz, border=7pt]{standalone}
+\documentclass[tikz]{standalone}
 
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{fourier}
 
 \usepackage{xcolor}
 \definecolor{wheat}{RGB}{245,222,179}
@@ -18,26 +17,27 @@
 
 \begin{document}
     \begin{tikzpicture}
-    	\node (residual) at (0,0) {\includegraphics[height=1cm, angle=270]{images/graph_abstract/residual}};
-        \path (residual.south) + (0,-.2) node (residual_legend) {\tiny (c) Height based};
-        
-        \path (residual.west) + (-.8,0) node (facet_graph) {\includestandalone[mode=buildnew, height=1cm]{building_graph}};
-        \path (facet_graph |- residual_legend) node (facet_graph_legend) {\tiny (b) Geometric};
+    	\node (residual) at (0,0) {\fbox{\includegraphics[height=1cm, angle=270]{images/graph_abstract/residual}}};
+        \path (residual.south) + (0,-.2) node (residual_legend) {\footnotesize (c) Height based};
 
-        \path (facet_graph.west) + (-1,0) node (model) {\includestandalone[mode=buildnew, height=1cm]{building_model}};
-        \path (model |- residual_legend) node (model_legend) {\tiny (a) Input model};
-        
-        \path (residual.east) + (.8,0) node (ortho_projection) {\includegraphics[height=1cm, angle=270]{images/graph_abstract/orthoprojection}};
-        \path (ortho_projection |- residual_legend) node (orthoprojection_legend) {\tiny (d) Image based};
-        
-        \draw[decorate, decoration={brace, amplitude=3pt}] (facet_graph.north west) -- (ortho_projection.east |- facet_graph.north) node[midway, yshift=5pt]{\tiny Features};
+        \path (residual.west) + (-2, 0) node (facet_graph) {\includestandalone[mode=buildnew, height=1cm]{building_graph}};
+        \path (facet_graph |- residual_legend) node (facet_graph_legend) {\footnotesize (b) Geometric};
 
-		\path (ortho_projection.east) + (1,0) node (errors) {\includestandalone[mode=buildnew, height=1cm]{building_errors}};
-        \path (errors |- residual_legend) node (errors_legend) {\tiny (e) Error detection:};
-        \path (errors_legend.south) + (0,-.1) node[align=left] (errors_list) {\tiny {\color{red}$\blacksquare$ \texttt{FIB}}.};
-         \path (errors_list.south) node[align=left] (errors_list) {\tiny {\color{blue}$\blacksquare$ \texttt{FOS}}.};
-         
-         \path[draw, ->, line width=1pt, rounded corners=10pt, green] (model.east) -- (facet_graph.west);
-         \path[draw, ->, line width=1pt, rounded corners=10pt, green] (ortho_projection.east) -- (errors.west);
+        \path (residual.north) + (0, 2) node (model) {\includestandalone[mode=buildnew, height=1cm]{building_model}};
+        \path (model.south) + (0,-.2) node (model_legend) {\footnotesize (a) Input model};
+
+        \path (residual.east) + (2, 0) node (ortho_projection) {\fbox{\includegraphics[height=1cm, angle=270]{images/graph_abstract/orthoprojection}}};
+        \path (ortho_projection |- residual_legend) node (ortho_projection_legend) {\footnotesize (d) Image based};
+
+        \draw[decorate, decoration={brace, amplitude=3pt, aspect=.491}] (facet_graph.north west) -- (ortho_projection_legend.east |- facet_graph.north) node (features_up) {};
+        \draw[decorate, decoration={brace, amplitude=3pt, mirror, aspect=.491}] (facet_graph_legend.south west) -- (ortho_projection_legend.east |- facet_graph_legend.south west) node (features_down) {};
+
+		\path (residual.south) + (0, -2) node (errors) {\includestandalone[mode=buildnew, height=1cm]{building_errors}};
+        \path (errors.south) + (0,-.2) node (errors_legend) {\footnotesize (e) Error detection};
+        \path (errors.15) + (.35, 0) node[align=left] (errors_list) {\scriptsize {\color{red}$\blacksquare$ \texttt{FIB}}};
+        \path (errors_list.south) node[align=left] (errors_list) {\scriptsize {\color{blue}$\blacksquare$ \texttt{FOS}}};
+
+        \path[draw, ->, line width=1pt, rounded corners=10pt, IGNGreen] (model_legend.south) -- (residual |- features_up.north);
+        \path[draw, ->, line width=1pt, rounded corners=10pt, IGNGreen] (residual |- features_down.south) -- (errors.north) node [midway, left, IGNGreen] {\scriptsize Classifier (RF, SVM \dots)};
     \end{tikzpicture}
 \end{document}

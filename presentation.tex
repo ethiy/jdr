@@ -2,7 +2,6 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{fourier}
 
 \usepackage{standalone}
     
@@ -24,13 +23,13 @@
     
 \usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage[font={small, color=black}, labelformat=empty]{caption}
+\usepackage[font={small, color=IGNDarkGrey}, labelformat=empty]{caption}
 \DeclareCaptionFont{footnotesize}{\footnotesize}
-\usepackage[font={footnotesize, color=black}, labelformat=empty]{subcaption}
+\usepackage[font={footnotesize, color=IGNDarkGrey}, labelformat=empty]{subcaption}
 \usepackage{adjustbox}
 
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usetikzlibrary{calc, 3d, shapes, arrows, shadows, decorations}
 
 
 \usepackage{pifont, textcomp}
@@ -277,7 +276,7 @@
         \subsection{Quality prediction pipeline}
             \begin{frame}{The evaluation pipeline}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, width=\textwidth]{graphical_abstract}
+                    \includestandalone[mode=buildnew, height=.75\textheight]{graphical_abstract}
                 \end{figure}
             \end{frame}
             \begin{frame}{Geometric features}
