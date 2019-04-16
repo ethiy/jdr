@@ -154,12 +154,12 @@
                 Two criteria determine the taxonomy structure:
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                     \item<2-> the \textbf{\acrfull{acr::lod}};
-                    \item<3-> the \textbf{\texttt{finesse}}: the semantic evaluation level.
+                    \item<3-> the \textbf{finesse}: the semantic evaluation level.
                 \end{itemize}
                 ~\\
                 \uncover<4->{
                     \begin{block}{Definition}
-                        error of maximal \texttt{finesse} $\Leftrightarrow$ corresponds \textit{semantically} to a \textit{unitary} action required to correct the model $\Leftrightarrow$ \texttt{atomic}.
+                        \underline{maximal} \texttt{finesse} error $\Leftrightarrow$ corresponds \textit{semantically}, to a \textit{unitary} action required to correct the model $\Leftrightarrow$ \texttt{atomic} error.
                     \end{block}
                 }
             \end{frame}
@@ -349,16 +349,20 @@
             \only<4>{
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildmissing, height=.7\textheight]{dataset_stats_finesse_2}
+                        \includestandalone[mode=buildmissing, height=.8\textheight]{dataset_stats_finesse_3}
                     \end{center}
                 \end{figure}
             }
-            \only<5>{
+            \only<5->{
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildmissing, height=.45\textheight]{dataset_stats_finesse_3}
+                        \includestandalone[mode=buildmissing, height=.6\textheight]{dataset_stats_finesse_2}
                     \end{center}
                 \end{figure}
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<6-> \footnotesize Some errors are differently represented in the datasets.
+                    \item<7-> \footnotesize The less frequent errors would raise serious learning problems.
+                \end{itemize}
             }
         \end{frame}
         \begin{frame}{Ablation study: Elancourt example}
@@ -394,13 +398,30 @@
                     \end{tabular}
                 \end{center}
             \end{table}
+            \only<1>{
+                \begin{center}
+                    \footnotesize Results in percentage.
+                \end{center}
+            }
+            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                \item<2-> \footnotesize In most cases \textbf{Geom.} is sufficient;
+                \item<3-> \footnotesize except for \textbf{BUS} $\rightarrow$ other modalities have a big impact ($\approx$ + 20\%).
+            \end{itemize}
         \end{frame}
-        \begin{frame}{Scalability study: possible experimentations}
+        \begin{frame}{Feature importance}
+            \begin{figure}
+                \includestandalone[mode=buildnew, height=.7\textheight]{feat_imp}
+            \end{figure}
+            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                \item<2-> \footnotesize All features importances hover \textbf{equally} around 33\%.
+            \end{itemize}
+        \end{frame}
+        \begin{frame}{Scalability study: conducted experimentations}
             \begin{figure}
                 \includestandalone[mode=buildnew, height=.7\textheight]{scalabitity_graph}
             \end{figure}
         \end{frame}
-        \begin{frame}{Transferability and Generalization of predictions}
+        \begin{frame}{Transferability and Generalization}
             \begin{table}
                 \scriptsize
                 \begin{center}
@@ -408,26 +429,39 @@
                         \hline
                         &&\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
                         \hline
-                        \multirow{6}{*}{\rotatebox{90}{Transf.}}&El. $\rightarrow$ Na. &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
-                        &El. $\rightarrow$ P-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
-                        &Na. $\rightarrow$ P-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{black} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{black} &\cellcolor{Zero}\\
-                        &Na. $\rightarrow$ El.  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
-                        &P-13 $\rightarrow$ Na.  &\cellcolor{Moins2} & \cellcolor{Moins1}& \cellcolor{black} & \cellcolor{Plus1}&\cellcolor{Zero} & \cellcolor{Moins3}& \cellcolor{Zero}& \cellcolor{black} & \cellcolor{Moins1} Hei.\\
-                        &P-13 $\rightarrow$ El. &\cellcolor{Zero} &\cellcolor{Moins1} & \cellcolor{Plus1}Im. & \cellcolor{Zero}& \cellcolor{Zero}& \cellcolor{Moins4}& \cellcolor{Moins2}Im. & \cellcolor{black} & \cellcolor{Zero}\\
+                        \multirow{6}{*}{\rotatebox{90}{Transf.}}&Elancourt $\rightarrow$ Nantes &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
+                        &Elancourt $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
+                        &Nantes $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{black} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{black} &\cellcolor{Zero}\\
+                        &Nantes $\rightarrow$ Elancourt  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
+                        &Paris-13 $\rightarrow$ Nantes  &\cellcolor{Moins2} & \cellcolor{Moins1}& \cellcolor{black} & \cellcolor{Plus1}&\cellcolor{Zero} & \cellcolor{Moins3}& \cellcolor{Zero}& \cellcolor{black} & \cellcolor{Moins1} Hei.\\
+                        &Paris-13 $\rightarrow$ Elancourt &\cellcolor{Zero} &\cellcolor{Moins1} & \cellcolor{Plus1}Im. & \cellcolor{Zero}& \cellcolor{Zero}& \cellcolor{Moins4}& \cellcolor{Moins2}Im. & \cellcolor{black} & \cellcolor{Zero}\\
                         \hline
                         \multirow{3}{*}{\rotatebox{90}{General.}  }&El.   & \cellcolor{Moins2}& \cellcolor{Moins2}Im.& \cellcolor{Moins2}&\cellcolor{Moins2} &\cellcolor{Zero} &\cellcolor{Plus1}Im. &\cellcolor{Plus2}Im. &\cellcolor{Moins1}Geom. & \cellcolor{Moins1} Hei\\
-                        &Na.   & \cellcolor{Zero}All& \cellcolor{Moins2}Im.&\cellcolor{Moins1}Im. &\cellcolor{Plus2} &\cellcolor{Zero} & \cellcolor{Zero}& \cellcolor{Moins2}Im.& \cellcolor{black} &\cellcolor{Zero}\\
-                        &P-13   &\cellcolor{Moins2}All &\cellcolor{Moins2} & \cellcolor{black} &\cellcolor{Plus1}Hei. &\cellcolor{Zero} &\cellcolor{Moins4} &\cellcolor{Moins2}Im. & &\cellcolor{Moins1}\\
+                        &Nantes   & \cellcolor{Zero}All& \cellcolor{Moins2}Im.&\cellcolor{Moins1}Im. &\cellcolor{Plus2} &\cellcolor{Zero} & \cellcolor{Zero}& \cellcolor{Moins2}Im.& \cellcolor{black} &\cellcolor{Zero}\\
+                        &Paris-13   &\cellcolor{Moins2}All &\cellcolor{Moins2} & \cellcolor{black} &\cellcolor{Plus1}Hei. &\cellcolor{Zero} &\cellcolor{Moins4} &\cellcolor{Moins2}Im. & &\cellcolor{Moins1}\\
                         \hline
                     \end{tabular}
-                    \caption{The color indicates the change magnitude: \textcolor{Moins4}{$\blacksquare$}: $[-45,-35\%[$-- \textcolor{Moins3}{$\blacksquare$}: $[-35,-25\%[$ -- \textcolor{Moins2}{$\blacksquare$}: $[-25,15\%[$-- \textcolor{Moins1}{$\blacksquare$}: $[-15, 5\%[$ -- $\square$: $[-5,5\%[$-- \textcolor{Plus1}{$\blacksquare$}: $[5,15\%[$ -- \textcolor{Plus2}{$\blacksquare$}: $[15,25\%]$ -- $\blacksquare$: cannot be computed.}
                 \end{center}
             \end{table}
+            \only<1>{
+                \begin{center}
+                    The color indicates the change magnitude: \textcolor{Moins4}{$\blacksquare$}: $[-45,-35\%[$-- \textcolor{Moins3}{$\blacksquare$}: $[-35,-25\%[$ -- \textcolor{Moins2}{$\blacksquare$}: $[-25,15\%[$-- \textcolor{Moins1}{$\blacksquare$}: $[-15, 5\%[$ -- $\square$: $[-5,5\%[$-- \textcolor{Plus1}{$\blacksquare$}: $[5,15\%[$ -- \textcolor{Plus2}{$\blacksquare$}: $[15,25\%]$ -- $\blacksquare$: cannot be computed.
+                \end{center}
+            }
+            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                \item<2-> \footnotesize Only 9/24 of \texttt{Building errors} transferability cases are \textcolor{IGNGreen}{positive}.
+                \item<3-> \footnotesize \texttt{Facets errors} are more transferable: 20/30 are \textcolor{IGNGreen}{positive}.
+                \item<4-> \footnotesize Generalization experiments confirm previous conclusions.
+            \end{itemize}
         \end{frame}
-        \begin{frame}{Representativeness study: F-score stability}
+        \begin{frame}{Representativeness}
             \begin{figure}
-                \includestandalone[mode=buildnew, height=.7\textheight]{f-scores_f3_repr}
+                \includestandalone[mode=buildnew, height=.65\textheight]{f-scores_f3_repr}
             \end{figure}
+            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                \item<2-> F-scores are \textbf{stable} no matter how the training set size changes.
+                \item<3-> Results are more stable for the well detected errors.
+            \end{itemize}
         \end{frame}
         \begin{frame}{Some failure cases on Elancourt}
             \begin{figure}
@@ -464,9 +498,5 @@
                     \item Extend to richer features $\longrightarrow$ Graph kernels, deep learning.
                 \end{itemize}
             }
-        \end{frame}
-    \section{References}
-        \begin{frame}[allowframebreaks]{References}
-            \printbibliography
         \end{frame}
 \end{document}

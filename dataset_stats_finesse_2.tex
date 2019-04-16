@@ -84,11 +84,17 @@
             xtick=data,
             x tick label style={rotate=45, anchor=east, xshift=-1.5mm, yshift=-2mm},
             ymax=100,
-            ymin=0
+            ymin=0,
+            legend style={
+                at={(3cm,-8em)},
+                anchor=north,
+                legend columns=-2
+            }
         ]
             \addplot table [percentage series=1] {\foneEl};
             \addplot table [percentage series=1] {\foneNa};
             \addplot table [percentage series=1] {\fonePa};
+            \legend{\strut Elancourt, \strut Nantes, \strut Paris-13}
         \end{axis}
     \end{tikzpicture}
 \end{document}
