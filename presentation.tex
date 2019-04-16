@@ -165,6 +165,7 @@
                     \begin{center}
                         \includestandalone[mode=buildnew, width=\textwidth]{lods}
                     \end{center}
+                    \caption{Basic \acrshort{acr::lod} classification used in Computer Vision.}
                 \end{figure}
             \end{frame}    
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 0$)}
@@ -195,26 +196,38 @@
                 \end{figure}
             \end{frame}
             \begin{frame}{Building \texttt{atomic} errors: 2.5D overhead reconstruction case}
-                \begin{figure}
-                    \begin{center}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=1.75cm]{images/errors/building/under_segmentation}}
-                            \caption{\label{fig::bul_under} Under segmentation}
-                        \end{subfigure}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=1.75cm]{images/errors/building/border}}
-                            \caption{\label{fig::bul_footprint} Imprecise border}
-                        \end{subfigure}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=1.75cm]{images/errors/building/topology}}
-                            \caption{\label{fig::bul_height} Inaccurate topology}
-                        \end{subfigure}
-                        \begin{subfigure}{.33\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/building/over_segmentation}}
-                            \caption{\label{fig::bul_over} Over segmentation}
-                        \end{subfigure}
-                    \end{center}
-                \end{figure}
+                \only<1>{
+                    \begin{figure}
+                        \begin{center}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.45\textheight]{images/errors/building/under_segmentation}}
+                                \caption{\label{fig::bul_under} Under segmentation (\texttt{BUS}).}
+                            \end{subfigure}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.45\textheight]{images/errors/building/over_segmentation}}
+                                \caption{\label{fig::bul_over} Over segmentation (\texttt{BOS}).}
+                            \end{subfigure}
+                        \end{center}
+                    \end{figure}
+                }
+                \only<2>{
+                    \begin{figure}
+                        \begin{center}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textheight]{images/errors/building/border}}
+                                \caption{\label{fig::bul_footprint} Imprecise border (\texttt{BIB}).}
+                            \end{subfigure}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textheight]{images/errors/building/topology}}
+                                \caption{\label{fig::bul_height} Inaccurate topology (\texttt{BIT}).}
+                            \end{subfigure}
+                        \end{center}
+                    \end{figure}
+                }
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 3$, $\leq$ \acrshort{acr::lod}-2)}
                 \begin{figure}
@@ -222,30 +235,43 @@
                 \end{figure}
             \end{frame}
             \begin{frame}{Facet \texttt{atomic} errors: 2.5D overhead reconstruction case}
-                \begin{figure}
-                    \begin{center}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/facet/under_segmentation}}
-                            \caption{\label{fig::fac_under} Under segmentation}
-                        \end{subfigure}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/facet/over_segmentation}}
-                            \caption{\label{fig::fac_over} Over segmentation}
-                        \end{subfigure}
-                        \begin{subfigure}{.28\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/facet/geometry}}
-                            \caption{\label{fig::fac_height} Imprecise geometry}
-                        \end{subfigure}
-                        \begin{subfigure}{.33\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/facet/border}}
-                            \caption{\label{fig::fac_footprint} Imprecise borders}
-                        \end{subfigure}
-                        \begin{subfigure}{.33\textwidth}
-                            \fbox{\includegraphics[height=2cm]{images/errors/facet/topology}}
-                            \caption{\label{fig::fac_height} Inaccurate topology}
-                        \end{subfigure}
-                    \end{center}
-                \end{figure}
+                \only<1>{
+                    \begin{figure}
+                        \begin{center}
+                            \begin{subfigure}{.33\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textwidth]{images/errors/facet/under_segmentation}}
+                                \caption{\label{fig::fac_under} Under segmentation}
+                            \end{subfigure}
+                            \begin{subfigure}{.33\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textwidth]{images/errors/facet/over_segmentation}}
+                                \caption{\label{fig::fac_over} Over segmentation}
+                            \end{subfigure}
+                            \begin{subfigure}{.33\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textwidth]{images/errors/facet/geometry}}
+                                \caption{\label{fig::fac_height} Imprecise geometry}
+                            \end{subfigure}
+                        \end{center}
+                    \end{figure}
+                }
+                \only<2>{
+                    \begin{figure}
+                        \begin{center}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textwidth]{images/errors/facet/border}}
+                                \caption{\label{fig::fac_footprint} Imprecise borders}
+                            \end{subfigure}
+                            \begin{subfigure}{.45\textwidth}
+                                \centering
+                                \fbox{\includegraphics[height=.5\textwidth]{images/errors/facet/topology}}
+                                \caption{\label{fig::fac_height} Inaccurate topology}
+                            \end{subfigure}
+                        \end{center}
+                    \end{figure}
+                }
             \end{frame}
         \subsection{Quality prediction pipeline}
             \begin{frame}{The evaluation pipeline}
@@ -412,5 +438,9 @@
                     \item Extend to richer features $\longrightarrow$ Graph kernels, deep learning.
                 \end{itemize}
             }
+        \end{frame}
+    \section{References}
+        \begin{frame}[allowframebreaks]{References}
+            \printbibliography
         \end{frame}
 \end{document}
