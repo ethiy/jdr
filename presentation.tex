@@ -182,10 +182,10 @@
                         \only<6>{
                             \begin{figure}
                                 \begin{center}
-                                    \begin{subfigure}{.6\textwidth}
+                                    \begin{subfigure}{.8\textwidth}
                                         \includegraphics[width=\textwidth]{images/use/incorrect_model}
                                     \end{subfigure}
-                                    \begin{subfigure}{.6\textwidth}
+                                    \begin{subfigure}{.8\textwidth}
                                         \includegraphics[width=\textwidth]{images/use/incorrect_proj}
                                     \end{subfigure}
                                 \end{center}
@@ -315,7 +315,7 @@
                 \only<1>{
                     \begin{figure}
                         \begin{center}
-                            \begin{subfigure}{.26\textwidth}
+                            \begin{subfigure}{.31\textwidth}
                                 \centering
                                 \fbox{\includegraphics[height=.4\textheight]{images/errors/facet/under_segmentation}}
                                 \caption{\label{fig::fac_under} Under segmentation (\texttt{FUS})}
@@ -325,7 +325,7 @@
                                 \fbox{\includegraphics[height=.4\textheight]{images/errors/facet/over_segmentation}}
                                 \caption{\label{fig::fac_over} Over segmentation (\texttt{FOS})}
                             \end{subfigure}
-                            \begin{subfigure}{.37\textwidth}
+                            \begin{subfigure}{.31\textwidth}
                                 \centering
                                 \fbox{\includegraphics[height=.4\textheight]{images/errors/facet/geometry}}
                                 \caption{\label{fig::fac_height} Imprecise geometry (\texttt{FIG})}
@@ -358,25 +358,33 @@
             \end{frame}
             \begin{frame}{Geometric features}
                 \begin{figure}
-                    \includestandalone[mode=buildnew, height=.75\textheight]{geometric_features}
+                    \includestandalone[mode=buildnew, height=.62\textheight]{geometric_features}
                 \end{figure}
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<2-> \footnotesize Statistics are computed, for each \underline{attribute}, at \underline{building} level.
+                    \item<3-> \footnotesize Results are concatenated in a \underline{fixed size} feature vector (\textit{length = 20} in experiments).
+                \end{itemize}
             \end{frame}
             \begin{frame}{Height-based features}
                 \begin{figure}
                     \includestandalone[mode=buildnew, width=\textwidth]{altimetric_features}
                 \end{figure}
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<2-> \footnotesize Feature vectors consist on the concatenated histogram values.
+                    \item<3-> \footnotesize The histogram resolution is \underline{constant} (\textit{length = 20} in experiments).
+                \end{itemize}
             \end{frame}
             \begin{frame}{Image-based features}
                 \begin{figure}
-                    \begin{subfigure}{.48\textwidth}
-                        \includegraphics[width=.9\textwidth]{images/radio_vector}
-                        \caption{\label{fig::ortho_sup} Building nadir projection on an orthoimage.}
-                    \end{subfigure}
-                    \begin{subfigure}{.48\textwidth}
+                    \begin{center}
                         \includestandalone[mode=buildnew, width=.9\textwidth]{radiometric_features}
-                        \caption{\label{fig::hist} cosine \underline{similarity} between facet edge normal \textcolor{blue}{$\vec n$} and image gradient \textcolor{purple}{$\vec \nabla I$} for each \textcolor{green}{intersecting} pixel.}
-                    \end{subfigure}
+                    \end{center}
                 \end{figure}
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<2-> \footnotesize A \underline{histogram} of the cosine similarity is computed \underline{per edge}.
+                    \item<3-> \footnotesize A \underline{weighted sum} of all edge histograms is computed \underline{over the building}.
+                    \item<4-> \footnotesize All histograms having the same resolution result in a feature vector (\textit{length = 20} in experiments).
+                \end{itemize}
             \end{frame}
     \section{Experiments}
         \begin{frame}{Datasets}
@@ -394,7 +402,7 @@
                             Typology & bi-level + flat roof & dense city center & Haussmann style + high towers \\
                             \bottomrule
                         \end{tabular}
-                        \caption{Urban scenes details.}
+                        \caption{Urban scenes description.}
                     \end{center}
                 \end{table}
                 \uncover<2>{
@@ -434,7 +442,7 @@
                     \end{center}
                 \end{figure}
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                    \item<6-> \footnotesize Some errors are differently represented in the datasets.
+                    \item<6-> \footnotesize Errors are \underline{heterogeneously} represented in the datasets.
                     \item<7-> \footnotesize The less frequent errors would raise serious learning problems.
                 \end{itemize}
             }
@@ -494,6 +502,21 @@
             \begin{figure}
                 \includestandalone[mode=buildnew, height=.7\textheight]{scalabitity_graph}
             \end{figure}
+            \only<2>{
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item \footnotesize Transferability: train on \underline{one} scene and test on a different \underline{one}.
+                \end{itemize}
+            }
+            \only<3>{
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item \footnotesize Generalization: train on \underline{two} scenes and test on the \underline{one} leftout.
+                \end{itemize}
+            }
+            \only<4>{
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item \footnotesize Representativeness: train on \underline{different fractions} of the \underline{combined} scenes.
+                \end{itemize}
+            }
         \end{frame}
         \begin{frame}{Transferability and Generalization}
             \begin{table}
@@ -525,7 +548,7 @@
             \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                 \item<2-> \footnotesize Only 9/24 of \texttt{Building errors} transferability cases are \textcolor{IGNGreen}{positive}.
                 \item<3-> \footnotesize \texttt{Facets errors} are more transferable: 20/30 are \textcolor{IGNGreen}{positive}.
-                \item<4-> \footnotesize Generalization experiments confirm previous conclusions.
+                \item<4-> \footnotesize Generalization experiments confirm that more diverse training data result in better results.
             \end{itemize}
         \end{frame}
         \begin{frame}{Representativeness}
@@ -534,7 +557,7 @@
             \end{figure}
             \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                 \item<2-> F-scores are \textbf{stable} no matter how the training set size changes.
-                \item<3-> Results are more stable for the well detected errors.
+                \item<3-> Results are even more stable for the well detected errors.
             \end{itemize}
         \end{frame}
         \begin{frame}{Some failure cases on Elancourt}
@@ -560,16 +583,20 @@
     \section{Conclusion}
         \begin{frame}{\textcolor{yellow}{Conclusion} \& \textcolor{purple}{Perspectives}}
             \begin{itemize}[label=$\blacktriangleright$, font=\color{yellow}, itemsep=2em]
-                \item \textbf{Flexible, robust and hierarchical} taxonomy;
-                \item \textbf{Fast, lightweight and modular} pipeline for model evaluation;
-                \item Baseline for geometric, image-based and height-based features;
+                \item<1-> \textbf{Flexible, robust and hierarchical} taxonomy;
+                \item<2-> \textbf{Fast, lightweight and modular} pipeline for model evaluation;
+                \item<3-> Pipeline tested with \textbf{baseline} handcrafted features:
+                    \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                        \item<4-> Results limited by the lack of training data;
+                        \item<5-> Need for a thorough representation of urban landscapes.
+                    \end{itemize}
             \end{itemize}
-            \uncover<2->{
+            \uncover<6->{
                 ~\\
                 Future work:
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{purple}, itemsep=2em]
-                    \item Dataset augmentation $\longrightarrow$ \textbf{Simulate errors} from the taxonomy based on reference data;
-                    \item Extend to richer features $\longrightarrow$ Graph kernels, deep learning.
+                    \item<6-> Dataset augmentation $\longrightarrow$ \textbf{Simulate errors};
+                    \item<7-> Extend to richer features $\longrightarrow$ Graph kernels, Scattering.
                 \end{itemize}
             }
         \end{frame}
