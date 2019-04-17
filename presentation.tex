@@ -20,7 +20,7 @@
     
 \usepackage{siunitx}
 \usepackage{mathrsfs, amsmath}
-    
+
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage[font={small, color=IGNDarkGrey}, labelformat=empty]{caption}
@@ -133,12 +133,86 @@
             }
         \end{frame}
         \begin{frame}{Potential use}
-            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                \item<1-> Change detection;
-                \item<2-> Urban models correction;
-                \item<3-> Urban reconstruction method evaluation;
-                \item<4-> Crowd reconstruction quality assessment.
-            \end{itemize}
+            \begin{minipage}[0.2\textheight]{\textwidth}
+                \begin{columns}[T]
+                    \begin{column}{0.5\textwidth}
+                        \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
+                            \item<1-> Change detection;
+                            \item<6-> Urban models correction;
+                            \item<7-> Urban reconstruction method evaluation;
+                            \item<8-> Crowd reconstruction quality assessment.
+                        \end{itemize}
+                    \end{column}
+                    \begin{column}{0.45\textwidth}
+                        \only<1>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_0}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<2>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_1}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<3>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_2}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<4>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_3}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<5>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_4}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<6>{
+                            \begin{figure}
+                                \begin{center}
+                                    \begin{subfigure}{.6\textwidth}
+                                        \includegraphics[width=\textwidth]{images/use/incorrect_model}
+                                    \end{subfigure}
+                                    \begin{subfigure}{.6\textwidth}
+                                        \includegraphics[width=\textwidth]{images/use/incorrect_proj}
+                                    \end{subfigure}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<7>{
+                            \begin{figure}
+                                \begin{center}
+                                    \begin{subfigure}{\textwidth}
+                                        \includegraphics[width=\textwidth]{images/difference_mesh_model/ground_truth}
+                                    \end{subfigure}
+                                    \begin{subfigure}{\textwidth}
+                                        \includegraphics[width=\textwidth]{images/use/bati3d_bercy}
+                                    \end{subfigure}
+                                \end{center}
+                            \end{figure}
+                        }
+                        \only<8>{
+                            \begin{figure}
+                                \begin{center}
+                                    \includegraphics[width=\textwidth]{images/use/crowdsourcing}
+                                \end{center}
+                            \end{figure}
+                        }
+                    \end{column}
+                \end{columns}
+            \end{minipage}
         \end{frame}
 
     \section{Methodology}
