@@ -20,8 +20,8 @@
 \begin{document}
     \begin{tikzpicture}
     	\node (facet_graph) {\includestandalone[mode=buildnew, height=4cm]{building_graph}};
-        \path (facet_graph) + (-.2, -1) node (f) {\small $f$};
-        \path (facet_graph) + (2, -.8) node (g) {\small $g$};
+        \path (facet_graph) + (-.2, -1) node[IGNDarkGreen] (f) {\small $f$};
+        \path (facet_graph) + (2, -.85) node[IGNDarkGreen] (g) {\small $g$};
         
         \path (f) + (-2, -1) node[IGNDarkGreen] (facet_attributes) {\tiny
         $\begin{bmatrix}
@@ -37,8 +37,8 @@
          \end{bmatrix}$
         };
         
-        \path[draw, ->, line width=1pt, rounded corners=10pt] (f.185) -- (facet_attributes.north);
+        \path[draw, IGNDarkGreen, ->, line width=1pt, rounded corners=10pt] (f.185) -- (facet_attributes.north);
         \path (edge_attributes.north |- f.east) + (-.25, .4) node (edge) {};
-        \path[draw, ->, line width=1pt, rounded corners=10pt] (edge) -- (edge |- edge_attributes.north);
+        \path[draw, blue, ->, line width=1pt, rounded corners=10pt] (edge) -- (edge |- edge_attributes.north);
     \end{tikzpicture}
 \end{document}
