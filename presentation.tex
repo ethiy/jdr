@@ -376,7 +376,7 @@
             \only<1>{
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildmissing, width=.8\textwidth]{dataset_stats_building}
+                        \includestandalone[mode=buildmissing, width=.7\textwidth]{dataset_stats_building}
                     \end{center}
                 \end{figure}
             }
@@ -408,18 +408,23 @@
                         \strut\\[-\normalbaselineskip]
                         \only<3>{\\[-\normalbaselineskip]\rowcolor{IGNGreen}}\texttt{BUS} & 32.98 & \textbf{76.47} & \textbf{41.86} & 75.57 & 40.38 & 71.00 & 39.32 & 71.81 \\
                         \hline
-                        \texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
+                        \strut\\[-\normalbaselineskip]
+                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
                         \hline
-                        \texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
+                        \strut\\[-\normalbaselineskip]
+                        \only<4>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
                         \hline
                         \hline
                         \texttt{FOS} & 98.91 & 99.07 & 98.91 & \textbf{99.30} & \textbf{98.99} & 98.84 & 98.91 & 98.84 \\
                         \hline
-                        \texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
+                        \strut\\[-\normalbaselineskip]
+                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
                         \hline
-                        \texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
+                        \strut\\[-\normalbaselineskip]
+                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
                         \hline
-                        \texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
+                        \strut\\[-\normalbaselineskip]
+                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
                         \hline
                         \texttt{FIG} & \textbf{80.54} & 73.14 & 80.45 & \textbf{72.62} & 78.69 & 72.12 & 79.02 & 71.82 \\
                         \hline
@@ -433,17 +438,33 @@
             }
             \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                 \item<2-> \footnotesize In most cases \textbf{Geom.} is sufficient;
-                \item<3-> \footnotesize Except for \texttt{BUS} $\rightarrow$ other modalities have a big impact ($\approx$ + 20\%).
-                \item<4-> \footnotesize Highly unbalanced labels are \underline{hard} to detect.
+                \item<3-> \footnotesize Except for \texttt{BUS} $\rightarrow$ other modalities have a big impact ($\approx$ + 10\%).
+                \item<4-> \footnotesize Only \textbf{Geom.} is even \underline{the best} for \texttt{BIT}.
+                \item<5-> \footnotesize Highly unbalanced labels are \underline{hard} to detect.
             \end{itemize}
         \end{frame}
         \begin{frame}{Feature importance}
-            \begin{figure}
-                \includestandalone[mode=buildnew, height=.7\textheight]{feat_imp}
-            \end{figure}
-            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                \item<2-> \footnotesize All features importances hover \underline{equally} around 33\%.
-            \end{itemize}
+            \only<1>{
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<1> Does this mean additional modalities are useless?
+                \end{itemize}
+            }
+            \only<2>{
+                \begin{figure}
+                    \includestandalone[mode=buildnew, width=.846\textwidth]{feat_imp_building}
+                \end{figure}
+            }
+            \only<3>{
+                \begin{figure}
+                    \includestandalone[mode=buildnew, width=\textwidth]{feat_imp_facet}
+                \end{figure}
+            }
+            \only<4->{
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
+                    \item<4-> All features importances hover \underline{equally} around 33\%.
+                    \item<5-> When do these additional features play a role?
+                \end{itemize}
+            }
         \end{frame}
         \begin{frame}{Scalability study: conducted experimentations}
             \begin{figure}
@@ -465,25 +486,26 @@
                 \end{itemize}
             }
         \end{frame}
-        \begin{frame}{Transferability and Generalization}
+        \begin{frame}{Transferability}
             \only<1>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
-                        \begin{tabular}{c c| x{.4cm} x{.4cm} x{.4cm} x{.4cm} |x{.4cm} x{.4cm} x{.4cm} x{.55cm} x{.4cm}}
+                        \begin{tabular}{| x{1.5cm}| x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} |}
                             \hline
-                            &&\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
+                            &\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
                             \hline
-                            \multirow{6}{*}{\rotatebox{90}{Transf.}}&Elancourt $\rightarrow$ Nantes &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
-                            &Elancourt $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
-                            &Nantes $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{black} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{black} &\cellcolor{Zero}\\
-                            &Nantes $\rightarrow$ Elancourt  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
-                            &Paris-13 $\rightarrow$ Nantes  &\cellcolor{Moins2} & \cellcolor{Moins1}& \cellcolor{black} & \cellcolor{Plus1}&\cellcolor{Zero} & \cellcolor{Moins3}& \cellcolor{Zero}& \cellcolor{black} & \cellcolor{Moins1} Hei.\\
-                            &Paris-13 $\rightarrow$ Elancourt &\cellcolor{Zero} &\cellcolor{Moins1} & \cellcolor{Plus1}Im. & \cellcolor{Zero}& \cellcolor{Zero}& \cellcolor{Moins4}& \cellcolor{Moins2}Im. & \cellcolor{black} & \cellcolor{Zero}\\
+                            Elancourt $\rightarrow$ Nantes &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
                             \hline
-                            \multirow{3}{*}{\rotatebox{90}{General.}  }&Elancourt & \cellcolor{Moins2}& \cellcolor{Moins2}Im.& \cellcolor{Moins2}&\cellcolor{Moins2} &\cellcolor{Zero} &\cellcolor{Plus1}Im. &\cellcolor{Plus2}Im. &\cellcolor{Moins1}Geom. & \cellcolor{Moins1} Hei\\
-                            &Nantes   & \cellcolor{Zero}All& \cellcolor{Moins2}Im.&\cellcolor{Moins1}Im. &\cellcolor{Plus2} &\cellcolor{Zero} & \cellcolor{Zero}& \cellcolor{Moins2}Im.& \cellcolor{black} &\cellcolor{Zero}\\
-                            &Paris-13   &\cellcolor{Moins2}All &\cellcolor{Moins2} & \cellcolor{black} &\cellcolor{Plus1}Hei. &\cellcolor{Zero} &\cellcolor{Moins4} &\cellcolor{Moins2}Im. & \cellcolor{black} &\cellcolor{Moins1}\\
+                            Elancourt $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
+                            \hline
+                            Nantes $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{black} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{black} &\cellcolor{Zero}\\
+                            \hline
+                            Nantes $\rightarrow$ Elancourt  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
+                            \hline
+                            Paris-13 $\rightarrow$ Nantes  &\cellcolor{Moins2} & \cellcolor{Moins1}& \cellcolor{black} & \cellcolor{Plus1}&\cellcolor{Zero} & \cellcolor{Moins3}& \cellcolor{Zero}& \cellcolor{black} & \cellcolor{Moins1} Hei.\\
+                            \hline
+                            Paris-13 $\rightarrow$ Elancourt &\cellcolor{Zero} &\cellcolor{Moins1} & \cellcolor{Plus1}Im. & \cellcolor{Zero}& \cellcolor{Zero}& \cellcolor{Moins4}& \cellcolor{Moins2}Im. & \cellcolor{black} & \cellcolor{Zero}\\
                             \hline
                         \end{tabular}
                     \end{center}
@@ -518,22 +540,24 @@
                 \begin{table}
                     \scriptsize
                     \begin{center}
-                        \begin{tabular}{c c| x{.4cm} x{.4cm} x{.4cm} x{.4cm} |x{.4cm} x{.4cm} x{.4cm} x{.55cm} x{.4cm}}
+                        \begin{tabular}{| x{1.5cm}| x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} |}
                             \hline
-                            &&\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
+                            &\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
                             \hline
-                            \multirow{6}{*}{\rotatebox{90}{Transf.}}&Elancourt $\rightarrow$ Nantes &\cellcolor{red} & \cellcolor{red}&\cellcolor{red}& \cellcolor{red}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}&\cellcolor{IGNGreen} Im. & \cellcolor{red}&\cellcolor{IGNGreen}\\
-                            &Elancourt $\rightarrow$ Paris-13  & \cellcolor{red}& \cellcolor{red}& \cellcolor{IGNGreen}& \cellcolor{red}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}Im.& \cellcolor{IGNGreen}Im.& \cellcolor{red}&\cellcolor{IGNGreen}\\
-                            &Nantes $\rightarrow$ Paris-13  & \cellcolor{red}& \cellcolor{red}& \cellcolor{black} & \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{black} &\cellcolor{IGNGreen}\\
-                            &Nantes $\rightarrow$ Elancourt  &\cellcolor{IGNGreen} & \cellcolor{red}& \cellcolor{red}&\cellcolor{IGNGreen}All & \cellcolor{IGNGreen}& \cellcolor{red}&\cellcolor{red}Im. &\cellcolor{IGNGreen}Im. &\cellcolor{IGNGreen}\\
-                            &Paris-13 $\rightarrow$ Nantes  &\cellcolor{red} & \cellcolor{red}& \cellcolor{black} & \cellcolor{IGNGreen}&\cellcolor{IGNGreen} & \cellcolor{red}& \cellcolor{IGNGreen}& \cellcolor{black} & \cellcolor{red} Hei.\\
-                            &Paris-13 $\rightarrow$ Elancourt &\cellcolor{IGNGreen} &\cellcolor{red} & \cellcolor{IGNGreen}Im. & \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{red}& \cellcolor{red}Im. & \cellcolor{black} & \cellcolor{IGNGreen}\\
+                            Elancourt $\rightarrow$ Nantes &\cellcolor{IGNRed} & \cellcolor{IGNRed}&\cellcolor{IGNRed}& \cellcolor{IGNRed}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}&\cellcolor{IGNGreen} Im. & \cellcolor{IGNRed}&\cellcolor{IGNGreen}\\
                             \hline
-                            \multirow{3}{*}{\rotatebox{90}{General.}  }&Elancourt & \cellcolor{red}& \cellcolor{red}Im.& \cellcolor{red}&\cellcolor{red} &\cellcolor{IGNGreen} &\cellcolor{IGNGreen}Im. &\cellcolor{IGNGreen}Im. &\cellcolor{red}Geom. & \cellcolor{red} Hei\\
-                            &Nantes   & \cellcolor{IGNGreen}All& \cellcolor{red}Im.&\cellcolor{red}Im. &\cellcolor{IGNGreen} &\cellcolor{IGNGreen} & \cellcolor{IGNGreen}& \cellcolor{red}Im.& \cellcolor{black} &\cellcolor{IGNGreen}\\
-                            &Paris-13   &\cellcolor{red}All &\cellcolor{red} & \cellcolor{black} &\cellcolor{IGNGreen}Hei. &\cellcolor{IGNGreen} &\cellcolor{red} &\cellcolor{red}Im. & \cellcolor{black} &\cellcolor{red}\\
+                            Elancourt $\rightarrow$ Paris-13  & \cellcolor{IGNRed}& \cellcolor{IGNRed}& \cellcolor{IGNGreen}& \cellcolor{IGNRed}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}Im.& \cellcolor{IGNGreen}Im.& \cellcolor{IGNRed}&\cellcolor{IGNGreen}\\
+                            \hline
+                            Nantes $\rightarrow$ Paris-13  & \cellcolor{IGNRed}& \cellcolor{IGNRed}& \cellcolor{black} & \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{black} &\cellcolor{IGNGreen}\\
+                            \hline
+                            Nantes $\rightarrow$ Elancourt  &\cellcolor{IGNGreen} & \cellcolor{IGNRed}& \cellcolor{IGNRed}&\cellcolor{IGNGreen}All & \cellcolor{IGNGreen}& \cellcolor{IGNRed}&\cellcolor{IGNRed}Im. &\cellcolor{IGNGreen}Im. &\cellcolor{IGNGreen}\\
+                            \hline
+                            Paris-13 $\rightarrow$ Nantes  &\cellcolor{IGNRed} & \cellcolor{IGNRed}& \cellcolor{black} & \cellcolor{IGNGreen}&\cellcolor{IGNGreen} & \cellcolor{IGNRed}& \cellcolor{IGNGreen}& \cellcolor{black} & \cellcolor{IGNRed} Hei.\\
+                            \hline
+                            Paris-13 $\rightarrow$ Elancourt &\cellcolor{IGNGreen} &\cellcolor{IGNRed} & \cellcolor{IGNGreen}Im. & \cellcolor{IGNGreen}& \cellcolor{IGNGreen}& \cellcolor{IGNRed}& \cellcolor{IGNRed}Im. & \cellcolor{black} & \cellcolor{IGNGreen}\\
                             \hline
                         \end{tabular}
+                        \caption{\footnotesize \textcolor{IGNRed}{$\blacksquare$}: Loss in F-score, \textcolor{IGNGreen}{$\blacksquare$}: Stability or gain in F-score.}
                     \end{center}
                 \end{table}
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
@@ -543,13 +567,82 @@
                 \end{itemize}
             }
         \end{frame}
+        \begin{frame}{Generalization}
+            \only<1>{
+                \begin{table}
+                    \scriptsize
+                    \begin{center}
+                        \begin{tabular}{| x{1.5cm}| x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} |}
+                            \hline
+                            &\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
+                            \hline
+                            Nnt. $\cup$ P-13 $\rightarrow$ Elancourt & \cellcolor{Moins2}& \cellcolor{Moins2}Im.& \cellcolor{Moins2}&\cellcolor{Moins2} &\cellcolor{Zero} &\cellcolor{Plus1}Im. &\cellcolor{Plus2}Im. &\cellcolor{Moins1}Geo & \cellcolor{Moins1} Hei\\
+                            \hline
+                            El. $\cup$ P-13 $\rightarrow$ Nantes & \cellcolor{Zero}All& \cellcolor{Moins2}Im.&\cellcolor{Moins1}Im. &\cellcolor{Plus2} &\cellcolor{Zero} & \cellcolor{Zero}& \cellcolor{Moins2}Im.& \cellcolor{black} &\cellcolor{Zero}\\
+                            \hline
+                            El. $\cup$ Nnt. $\rightarrow$ Paris-13 &\cellcolor{Moins2}All &\cellcolor{Moins2} & \cellcolor{black} &\cellcolor{Plus1}Hei. &\cellcolor{Zero} &\cellcolor{Moins4} &\cellcolor{Moins2}Im. & \cellcolor{black} &\cellcolor{Moins1}\\
+                            \hline
+                        \end{tabular}
+                    \end{center}
+                \end{table}
+                \begin{center}
+                    \begin{tikzpicture}
+                        \shade[left color=white,right color=Moins4] (0, 0) rectangle (1, .25);
+                        \draw[Moins4, fill=Moins4] (1, 0) rectangle (2, .25);
+                        \draw[Moins3, fill=Moins3] (2, 0) rectangle (3, .25);
+                        \draw[Moins2, fill=Moins2] (3, 0) rectangle (4, .25);
+                        \draw[Moins1, fill=Moins1] (4, 0) rectangle (5, .25);
+                        \draw[Zero, fill=Zero] (5, 0) rectangle (6, .25);
+                        \draw[Plus1, fill=Plus1] (6, 0) rectangle (7, .25);
+                        \draw[Plus2, fill=Plus2] (7, 0) rectangle (8, .25);
+                        \shade[left color=Plus2,right color=white] (8, 0) rectangle (9, .25);
+                        \draw[black] (0, 0) -- (9, 0);
+                        \draw[black] (0, .25) -- (9, .25);
+                        \draw[black, fill=black] (5, -.75) rectangle (4, -1);
+                        \path (4.5, -1.25) node {\footnotesize NaN};
+                        \draw[black] (1, .25) -- (1, -2pt) node[below, IGNDarkGrey] {\footnotesize -45\%};
+                        \draw[black] (2, .25) -- (2, -2pt) node[below, IGNDarkGrey] {\footnotesize -35\%};
+                        \draw[black] (3, .25) -- (3, -2pt) node[below, IGNDarkGrey] {\footnotesize -25\%};
+                        \draw[black] (4, .25) -- (4, -2pt) node[below, IGNDarkGrey] {\footnotesize -15\%};
+                        \draw[black] (5, .25) -- (5, -2pt) node[below, IGNDarkGrey] {\footnotesize -5\%};
+                        \draw[black] (6, .25) -- (6, -2pt) node[below, IGNDarkGrey] {\footnotesize 5\%};
+                        \draw[black] (7, .25) -- (7, -2pt) node[below, IGNDarkGrey] {\footnotesize 15\%};
+                        \draw[black] (8, .25) -- (8, -2pt) node[below, IGNDarkGrey] {\footnotesize 25\%};
+                    \end{tikzpicture}
+                \end{center}
+            }
+            \only<2->{
+                \begin{table}
+                    \scriptsize
+                    \begin{center}
+                        \begin{tabular}{| x{1.5cm}| x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} |}
+                            \hline
+                            &\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
+                            \hline
+                            Nnt. $\cup$ P-13 $\rightarrow$ Elancourt & \cellcolor{IGNRed}& \cellcolor{IGNRed}Im.& \cellcolor{IGNRed}&\cellcolor{IGNRed} &\cellcolor{IGNGreen} &\cellcolor{IGNGreen}Im. &\cellcolor{IGNGreen}Im. &\cellcolor{IGNRed}Geo & \cellcolor{IGNRed} Hei\\
+                            \hline
+                            El. $\cup$ P-13 $\rightarrow$ Nantes   & \cellcolor{IGNGreen}All& \cellcolor{IGNRed}Im.&\cellcolor{IGNRed}Im. &\cellcolor{IGNGreen} &\cellcolor{IGNGreen} & \cellcolor{IGNGreen}& \cellcolor{IGNRed}Im.& \cellcolor{black} &\cellcolor{IGNGreen}\\
+                            \hline
+                            El. $\cup$ Nnt. $\rightarrow$ Paris-13   &\cellcolor{IGNRed}All &\cellcolor{IGNRed} & \cellcolor{black} &\cellcolor{IGNGreen}Hei. &\cellcolor{IGNGreen} &\cellcolor{IGNRed} &\cellcolor{IGNRed}Im. & \cellcolor{black} &\cellcolor{IGNRed}\\
+                            \hline
+                        \end{tabular}
+                        \caption{\footnotesize \textcolor{IGNRed}{$\blacksquare$}: Loss in F-score, \textcolor{IGNGreen}{$\blacksquare$}: Stability or gain in F-score.}
+                    \end{center}
+                \end{table}
+                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                    \item<2-> \footnotesize \footnotesize Only 3/12 of \texttt{Building errors} generalization cases are \textcolor{IGNGreen}{positive}.
+                    \item<3-> \footnotesize \texttt{Facets errors} are more generalizable: 7/15 are \textcolor{IGNGreen}{positive}.
+                    \item<4-> \footnotesize More diverse training data \underline{averages out} results.
+                \end{itemize}
+            }
+        \end{frame}
         \begin{frame}{Representativeness}
             \begin{figure}
                 \includestandalone[mode=buildnew, height=.65\textheight]{f-scores_f3_repr}
             \end{figure}
             \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                \item<2-> F-scores are \textbf{stable} no matter how the training set size changes.
-                \item<3-> Results are even more stable for the well detected errors.
+                \item<2-> F-scores are \textbf{stable} no matter how much the \underline{training set size} changes.
+                \item<3-> Results are even \underline{more stable} for the \underline{very frequent} errors.
             \end{itemize}
         \end{frame}
         \begin{frame}{Some failure cases on Elancourt}
