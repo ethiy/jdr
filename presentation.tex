@@ -135,51 +135,32 @@
         \begin{frame}{Potential use}
             \begin{minipage}[0.2\textheight]{\textwidth}
                 \begin{columns}[T]
-                    \begin{column}{0.5\textwidth}
+                    \begin{column}{0.48\textwidth}
                         \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                             \item<1-> Change detection;
-                            \item<6-> Urban models correction;
-                            \item<7-> Urban reconstruction method evaluation;
-                            \item<8-> Crowd reconstruction quality assessment.
+                            \item<2-> Urban models correction;
+                            \item<3-> Urban reconstruction method evaluation;
+                            \item<4-> Crowd reconstruction quality assessment.
                         \end{itemize}
                     \end{column}
-                    \begin{column}{0.45\textwidth}
+                    \begin{column}{0.48\textwidth}
                         \only<1>{
                             \begin{figure}
                                 \begin{center}
-                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_0}
+                                    \begin{subfigure}{.8\textwidth}
+                                        \begin{flushright}
+                                            \includegraphics[width=.55\textwidth]{images/use/top_building_change_before}
+                                        \end{flushright}
+                                    \end{subfigure}
+                                    \begin{subfigure}{.8\textwidth}
+                                        \begin{flushright}
+                                            \includegraphics[width=.4447\textwidth]{images/use/top_building_change_after}                                            
+                                        \end{flushright}
+                                    \end{subfigure}
                                 \end{center}
                             \end{figure}
                         }
                         \only<2>{
-                            \begin{figure}
-                                \begin{center}
-                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_1}
-                                \end{center}
-                            \end{figure}
-                        }
-                        \only<3>{
-                            \begin{figure}
-                                \begin{center}
-                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_2}
-                                \end{center}
-                            \end{figure}
-                        }
-                        \only<4>{
-                            \begin{figure}
-                                \begin{center}
-                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_3}
-                                \end{center}
-                            \end{figure}
-                        }
-                        \only<5>{
-                            \begin{figure}
-                                \begin{center}
-                                    \includegraphics[width=\textwidth]{images/recal69/mns-shade-masq_4}
-                                \end{center}
-                            \end{figure}
-                        }
-                        \only<6>{
                             \begin{figure}
                                 \begin{center}
                                     \begin{subfigure}{.8\textwidth}
@@ -191,19 +172,19 @@
                                 \end{center}
                             \end{figure}
                         }
-                        \only<7>{
+                        \only<3>{
                             \begin{figure}
                                 \begin{center}
-                                    \begin{subfigure}{\textwidth}
+                                    \begin{subfigure}{.8\textwidth}
                                         \includegraphics[width=\textwidth]{images/difference_mesh_model/ground_truth}
                                     \end{subfigure}
-                                    \begin{subfigure}{\textwidth}
+                                    \begin{subfigure}{.8\textwidth}
                                         \includegraphics[width=\textwidth]{images/use/bati3d_bercy}
                                     \end{subfigure}
                                 \end{center}
                             \end{figure}
                         }
-                        \only<8>{
+                        \only<4>{
                             \begin{figure}
                                 \begin{center}
                                     \includegraphics[width=\textwidth]{images/use/crowdsourcing}
