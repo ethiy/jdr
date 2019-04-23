@@ -365,65 +365,32 @@
                 \end{itemize}
             \end{frame}
     \section{Experiments}
-        \begin{frame}{Datasets}
-            \only<1-2>{
-                \begin{table}
-                    \begin{center}
-                        \scriptsize
-                        \begin{tabular}{c c c c}
-                            \toprule
-                            & \textbf{Elancourt} & \textbf{Nantes} & \textbf{Paris-13} \\
-                            \midrule
-                            \# samples & 2009 & 748 & 478 \\
-                            DSM res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
-                            Img. res. & \SI{6}{\cm} & \SI{10}{\cm} & \SI{10}{\cm} \\
-                            Typology & bi-level + flat roof & dense city center & Haussmann style + high towers \\
-                            \bottomrule
-                        \end{tabular}
-                        \caption{Urban scenes description.}
-                    \end{center}
-                \end{table}
-                \uncover<2>{
-                    \begin{table}
-                        \begin{center}
-                            \scriptsize
-                            \begin{tabular}{c c c}
-                                \toprule
-                                Geometric & Height based & Image based \\
-                                \midrule
-                                $\approx$ \SI{0.05}{\second}/building & $\approx$ \SI{1.4}{\second}/building & $>$ \SI{16}{\second}/building \\
-                                \bottomrule
-                            \end{tabular}
-                            \caption{Running time per feature type.}
-                        \end{center}
-                    \end{table}
-                }
-            }
-            \only<3>{
+        \begin{frame}{Datasets: urban scenes}
+            \begin{figure}
+                \begin{center}
+                    \includestandalone[mode=buildnew, width=.9\textwidth]{dataset}
+                \end{center}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{Datasets: errors occurences}
+            \only<1>{
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildnew, width=.9\textwidth]{dataset}
+                        \includestandalone[mode=buildmissing, width=.8\textwidth]{dataset_stats_building}
                     \end{center}
                 \end{figure}
             }
-            \only<4>{
+            \only<2->{
                 \begin{figure}
                     \begin{center}
-                        \includestandalone[mode=buildmissing, height=.8\textheight]{dataset_stats_finesse_3}
+                        \includestandalone[mode=buildmissing, width=.8\textwidth]{dataset_stats_facet}
                     \end{center}
                 \end{figure}
             }
-            \only<5->{
-                \begin{figure}
-                    \begin{center}
-                        \includestandalone[mode=buildmissing, height=.6\textheight]{dataset_stats_finesse_2}
-                    \end{center}
-                \end{figure}
-                \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                    \item<6-> \footnotesize Errors are \underline{heterogeneously} represented in the datasets.
-                    \item<7-> \footnotesize The less frequent errors would raise serious learning problems.
-                \end{itemize}
-            }
+            \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
+                \item<3-> \footnotesize Errors are \underline{heterogeneously} represented in the datasets.
+                \item<4-> \footnotesize The less frequent errors would raise serious learning problems.
+            \end{itemize}
         \end{frame}
         \begin{frame}{Ablation study: Elancourt example}
             \begin{table}

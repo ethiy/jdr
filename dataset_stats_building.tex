@@ -1,44 +1,47 @@
-\documentclass[tikz, border=7pt]{standalone}
+\documentclass[tikz, border=1pt]{standalone}
 
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 
 \begin{document}
-    \pgfplotstableread[col sep=comma,header=false]{
-        Unqualifiable, 62, 1947
-        Building errors, 1420, 589
-        Facet errors, 1648, 361
-    }\foneEl
+    \pgfplotstableread[col sep=comma, header=false]{
+        BOS, 1342, 667
+        BUS, 473, 1536
+        BIB, 203, 1806
+        BIT, 99, 1910
+    }\buildingEl
 
     \pgfplotstablecreatecol[
         create col/expr={
             \thisrow{1} + \thisrow{2}
         }
-    ]{sum}{\foneEl}
-
-    \pgfplotstableread[col sep=comma,header=false]{
-        Unqualifiable, 56, 692
-        Building errors, 435, 313
-        Facet errors, 568, 180
-    }\foneNa
-
-    \pgfplotstablecreatecol[
-        create col/expr={
-            \thisrow{1} + \thisrow{2}
-        }
-    ]{sum}{\foneNa}
-   
-    \pgfplotstableread[col sep=comma,header=false]{
-        Unqualifiable, 23, 455
-        Building errors, 303, 175
-        Facet errors, 411, 67
-    }\fonePa
+    ]{sum}{\buildingEl}
+    
+    \pgfplotstableread[col sep=comma, header=false]{
+        BOS, 291, 457
+        BUS, 68, 680
+        BIB, 99, 649
+        BIT, 113, 635
+    }\buildingNa
 
     \pgfplotstablecreatecol[
         create col/expr={
             \thisrow{1} + \thisrow{2}
         }
-    ]{sum}{\fonePa}
+    ]{sum}{\buildingNa}
+
+    \pgfplotstableread[col sep=comma, header=false]{
+        BOS, 202, 276
+        BUS, 63, 415
+        BIB, 55, 423
+        BIT, 76, 402
+    }\buildingPa
+
+    \pgfplotstablecreatecol[
+        create col/expr={
+            \thisrow{1} + \thisrow{2}
+        }
+    ]{sum}{\buildingPa}
 
     \pgfplotsset{
         percentage plot/.style={
@@ -68,32 +71,27 @@
     }
 
     \begin{tikzpicture}
-        \node (origin) at (.5,0) {};
-
         \begin{axis}[
-            title={\texttt{Finesse} level 2},
-            at={(origin)},
-            ylabel={Ratio},
+            title={\texttt{Building errors}},
             ybar,
             height=8cm,
-            width=10cm,
-            enlarge x limits=0.25,
+            width=14cm,
+            enlarge x limits=0.2,
             percentage plot,
             bar width=.7cm,
-            symbolic x coords={Unqualifiable, Building errors, Facet errors},
+            ylabel={Ratio},
+            symbolic x coords={BOS, BUS, BIB, BIT},
             xtick=data,
             x tick label style={rotate=45, anchor=east, xshift=-1.5mm, yshift=-2mm},
             ymax=100,
             ymin=0,
             legend style={
-                at={(3cm,-8em)},
-                anchor=north,
                 legend columns=-2
             }
         ]
-            \addplot table [percentage series=1] {\foneEl};
-            \addplot table [percentage series=1] {\foneNa};
-            \addplot table [percentage series=1] {\fonePa};
+            \addplot table [percentage series=1] {\buildingEl};
+            \addplot table [percentage series=1] {\buildingNa};
+            \addplot table [percentage series=1] {\buildingPa};
             \legend{\strut Elancourt, \strut Nantes, \strut Paris-13}
         \end{axis}
     \end{tikzpicture}
