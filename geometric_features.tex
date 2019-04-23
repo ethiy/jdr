@@ -25,15 +25,15 @@
         
         \path (f) + (-2, -1) node[IGNDarkGreen] (facet_attributes) {\tiny
         $\begin{bmatrix}
-        	d(f)\\
-            \mathscr{A}(f)\\
-            \mathscr{C}(f)
+        	\texttt{degree}(f)\\
+            \texttt{Area}(f)\\
+            \texttt{Circumference}(f)
          \end{bmatrix}$
         };
         \path (f) + (1.5, -1.5) node[blue] (edge_attributes) {\tiny
         $\begin{bmatrix}
-            \vert\vert \mathscr{G}(f)- \mathscr{G}(g) \vert\vert_2\\
-            \arccos(\vec{n}(f) . \vec{n}(g))
+            \vert\vert \texttt{Centroid}(f)- \texttt{Centroid}(g) \vert\vert_2\\
+            \texttt{angle}(\vec{n}(f), \vec{n}(g))
          \end{bmatrix}$
         };
         
