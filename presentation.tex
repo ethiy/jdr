@@ -1,4 +1,4 @@
-\documentclass[10pt, export]{beamer}
+\documentclass[10pt, export, handout]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -108,7 +108,7 @@
             \end{figure}
         \end{frame}
         \begin{frame}{Motivation}
-            \only<1-4>{
+            \only<1-4|handout:1>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                     \item<1-> Automatic urban modeling: an \underline{active} research area \citep{Musialski2012};
                     \item<2-> Results \textcolor{IGNGreen}{seamless} but \textcolor{IGNRed}{lack generality} and \textcolor{IGNRed}{often erroneous} \citep{rottensteiner2014results};
@@ -118,7 +118,7 @@
                     \item<4-> Urban 3D model semantic diagnostic \textcolor{IGNRed}{not well studied} \citep{boudet2006supervised, Michelin2013};
                 \end{itemize}
             }
-            \only<5->{
+            \only<5-|handout:2>{
                 \begin{block}{\textcolor{purple}{\textbf{Goal}}}
                     \underline{Detect} and \underline{describe} semantic errors that affect building 3D models.
                 \end{block}
@@ -141,7 +141,7 @@
                         \end{itemize}
                     \end{column}
                     \begin{column}{0.48\textwidth}
-                        \only<1>{
+                        \only<1|handout:0>{
                             \begin{figure}
                                 \begin{center}
                                     \begin{subfigure}{.8\textwidth}
@@ -157,7 +157,7 @@
                                 \end{center}
                             \end{figure}
                         }
-                        \only<2>{
+                        \only<2|handout:0>{
                             \begin{figure}
                                 \begin{center}
                                     \begin{subfigure}{.8\textwidth}
@@ -169,7 +169,7 @@
                                 \end{center}
                             \end{figure}
                         }
-                        \only<3>{
+                        \only<3|handout:0>{
                             \begin{figure}
                                 \begin{center}
                                     \begin{subfigure}{.8\textwidth}
@@ -181,7 +181,7 @@
                                 \end{center}
                             \end{figure}
                         }
-                        \only<4>{
+                        \only<4|handout:0>{
                             \begin{figure}
                                 \begin{center}
                                     \includegraphics[width=\textwidth]{images/use/crowdsourcing}
@@ -234,7 +234,7 @@
                 \end{figure}
             \end{frame}
             \begin{frame}{Error taxonomy (\texttt{finesse} $= 2$)}
-                \only<1>{
+                \only<1|handout:0>{
                     \begin{figure}
                         \includestandalone[mode=buildmissing, width=\textwidth]{finesse_2_taxonomy}
                     \end{figure}
@@ -251,7 +251,7 @@
                 \end{figure}
             \end{frame}
             \begin{frame}{Building \texttt{atomic} errors: 2.5D overhead reconstruction case}
-                \only<1>{
+                \only<1|handout:1>{
                     \begin{figure}
                         \begin{center}
                             \begin{subfigure}{.4\textwidth}
@@ -267,7 +267,7 @@
                         \end{center}
                     \end{figure}
                 }
-                \only<2>{
+                \only<2|handout:2>{
                     \begin{figure}
                         \begin{center}
                             \begin{subfigure}{.45\textwidth}
@@ -290,7 +290,7 @@
                 \end{figure}
             \end{frame}
             \begin{frame}{Facet \texttt{atomic} errors: 2.5D overhead reconstruction case}
-                \only<1>{
+                \only<1|handout:1>{
                     \begin{figure}
                         \begin{center}
                             \begin{subfigure}{.31\textwidth}
@@ -311,7 +311,7 @@
                         \end{center}
                     \end{figure}
                 }
-                \only<2>{
+                \only<2|handout:2>{
                     \begin{figure}
                         \begin{center}
                             \begin{subfigure}{.45\textwidth}
@@ -373,14 +373,14 @@
             \end{figure}
         \end{frame}
         \begin{frame}{Datasets: errors occurences}
-            \only<1>{
+            \only<1|handout:1>{
                 \begin{figure}
                     \begin{center}
                         \includestandalone[mode=buildmissing, width=.7\textwidth]{dataset_stats_building}
                     \end{center}
                 \end{figure}
             }
-            \only<2->{
+            \only<2-|handout:2>{
                 \begin{figure}
                     \begin{center}
                         \includestandalone[mode=buildmissing, width=.8\textwidth]{dataset_stats_facet}
@@ -406,25 +406,25 @@
                         \texttt{BOS} & \textbf{93.96} & 76.15 & 91.43 & \textbf{77.76} & 91.51 & 76.08 & 90.83 & 76.14 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<3>{\\[-\normalbaselineskip]\rowcolor{IGNGreen}}\texttt{BUS} & 32.98 & \textbf{76.47} & \textbf{41.86} & 75.57 & 40.38 & 71.00 & 39.32 & 71.81 \\
+                        \only<3|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNGreen}}\texttt{BUS} & 32.98 & \textbf{76.47} & \textbf{41.86} & 75.57 & 40.38 & 71.00 & 39.32 & 71.81 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<4>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
+                        \only<4|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
                         \hline
                         \hline
                         \texttt{FOS} & 98.91 & 99.07 & 98.91 & \textbf{99.30} & \textbf{98.99} & 98.84 & 98.91 & 98.84 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
                         \hline
                         \texttt{FIG} & \textbf{80.54} & 73.14 & 80.45 & \textbf{72.62} & 78.69 & 72.12 & 79.02 & 71.82 \\
                         \hline
@@ -444,22 +444,22 @@
             \end{itemize}
         \end{frame}
         \begin{frame}{Feature importance}
-            \only<1>{
+            \only<1|handout:0>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                     \item<1> Does this mean additional modalities are useless?
                 \end{itemize}
             }
-            \only<2>{
+            \only<2|handout:1>{
                 \begin{figure}
                     \includestandalone[mode=buildnew, width=.846\textwidth]{feat_imp_building}
                 \end{figure}
             }
-            \only<3>{
+            \only<3|handout:2>{
                 \begin{figure}
                     \includestandalone[mode=buildnew, width=\textwidth]{feat_imp_facet}
                 \end{figure}
             }
-            \only<4->{
+            \only<4-|handout:3>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                     \item<4-> All features importances hover \underline{equally} around 33\%.
                     \item<5-> When do these additional features play a role?
@@ -470,24 +470,24 @@
             \begin{figure}
                 \includestandalone[mode=buildnew, height=.7\textheight]{scalabitity_graph}
             \end{figure}
-            \only<2>{
+            \only<2|handout:0>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                     \item \footnotesize Transferability: train on \underline{one} scene and test on a different \underline{one}.
                 \end{itemize}
             }
-            \only<3>{
+            \only<3|handout:0>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                     \item \footnotesize Generalization: train on \underline{two} scenes and test on the \underline{one} leftout.
                 \end{itemize}
             }
-            \only<4>{
+            \only<4|handout:0>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                     \item \footnotesize Representativeness: train on \underline{different fractions} of the \underline{combined} scenes.
                 \end{itemize}
             }
         \end{frame}
         \begin{frame}{Transferability}
-            \only<1>{
+            \only<1|handout:1>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
@@ -536,7 +536,7 @@
                     \end{tikzpicture}
                 \end{center}
             }
-            \only<2->{
+            \only<2-|handout:2>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
@@ -568,7 +568,7 @@
             }
         \end{frame}
         \begin{frame}{Generalization}
-            \only<1>{
+            \only<1|handout:1>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
@@ -611,7 +611,7 @@
                     \end{tikzpicture}
                 \end{center}
             }
-            \only<2->{
+            \only<2-|handout:2>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
