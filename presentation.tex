@@ -50,19 +50,20 @@
 \usepackage[useregional]{datetime2}
     
 \usepackage[
-        mcite,
-        backend=bibtex,
-        style=verbose,
-        citestyle=authoryear,
-        bibstyle=numeric,
+        backend=biber,
+        style=alphabetic,
+        backref=true,
         sorting=none,
         autocite=footnote,
         maxnames=2,
         hyperref=true,
-        natbib=true,
-        abbreviate=true
+        natbib=false,
+        abbreviate=true,
+        doi=false,
+        isbn=false,
+        url=false
     ]{biblatex}
-\bibliography{references}
+\addbibresource{references.bib}
 \setbeamerfont{footnote}{size=\tiny}
 
 
@@ -110,12 +111,12 @@
         \begin{frame}{Motivation}
             \only<1-4|handout:1>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                    \item<1-> Automatic urban modeling: an \underline{active} research area \citep{Musialski2012};
-                    \item<2-> Results \textcolor{IGNGreen}{seamless} but \textcolor{IGNRed}{lack generality} and \textcolor{IGNRed}{often erroneous} \citep{rottensteiner2014results};
+                    \item<1-> Automatic urban modeling: an \underline{active} research area \footfullcite{Musialski2012};
+                    \item<2-> Results \textcolor{IGNGreen}{seamless} but \textcolor{IGNRed}{lack generality} and \textcolor{IGNRed}{often erroneous} \footfullcite{rottensteiner2014results};
                     \begin{itemize}[label=$\longrightarrow$]
                         \item<3-> labourious manual corrections: $\approx$ \SI{2}{\hour\per\km\squared} per expert.
                     \end{itemize}
-                    \item<4-> Urban 3D model semantic diagnostic \textcolor{IGNRed}{not well studied} \citep{boudet2006supervised, Michelin2013};
+                    \item<4-> Urban 3D model semantic diagnostic \textcolor{IGNRed}{not well studied} \footfullcite{boudet2006supervised}\footfullcite{Michelin2013};
                 \end{itemize}
             }
             \only<5-|handout:2>{

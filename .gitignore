@@ -15,6 +15,7 @@
 *.nav
 *.run.xml
 *blx.bib
+*.bcf
 
 # Latex output
 *.pdf
