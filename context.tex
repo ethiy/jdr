@@ -1,0 +1,16 @@
+\documentclass[tikz, border=1pt]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.arrows, fadings}
+
+\begin{document}
+    \begin{tikzpicture}[every node/.append style={draw=black, left color=white, single arrow}]
+        \node at (0,2) [
+            right color=red,
+            single arrow,
+            minimum height=2cm,
+            shading angle=90+270,
+            rotate=270
+        ] {};
+    \end{tikzpicture}
+\end{document}
