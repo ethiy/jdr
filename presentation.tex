@@ -435,22 +435,22 @@
                         \only<3|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNGreen}}\texttt{BUS} & 32.98 & \textbf{76.47} & \textbf{41.86} & 75.57 & 40.38 & 71.00 & 39.32 & 71.81 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\texttt{BIB} & 12.32 & 67.57 & 12.81 & \textbf{68.42} & 16.26 & 67.35 & \textbf{16.75} & 68.0 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<4|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
+                        \only<4|handout:0>{\\[-\normalbaselineskip]\rowcolor{orange}}\only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\texttt{BIT} & \textbf{25.25} & 92.59 & 20.20 & 90.91 & 20.20 & \textbf{95.24} & 11.11 & 91.67 \\
                         \hline
                         \hline
                         \texttt{FOS} & 98.91 & 99.07 & 98.91 & \textbf{99.30} & \textbf{98.99} & 98.84 & 98.91 & 98.84 \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\texttt{FUS} & \textbf{1.90} & 54.55 & 0.63 & \textbf{66.67} & 1.61 & 50 & 1.27 & \textbf{66.67} \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\texttt{FIB} & \textbf{9.17} & 87.5 & 0 & --- & 8.30 & 82.61 & 7.42 & \textbf{100} \\
                         \hline
                         \strut\\[-\normalbaselineskip]
-                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{yellow}}\texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
+                        \only<5|handout:0>{\\[-\normalbaselineskip]\rowcolor{IGNRed}}\texttt{FIT} & \textbf{6.67} & \textbf{100} & 8.73 & 95.24 & 3.33 & \textbf{100} & 3.33 & \textbf{100} \\
                         \hline
                         \texttt{FIG} & \textbf{80.54} & 73.14 & 80.45 & \textbf{72.62} & 78.69 & 72.12 & 79.02 & 71.82 \\
                         \hline
@@ -463,10 +463,10 @@
                 \end{center}
             }
             \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                \item<2-> \footnotesize In most cases \textbf{Geom.} is sufficient;
+                \item[\textcolor{IGNDarkGreen}{$\blacktriangleright$}]<2-> \footnotesize In most cases \textbf{Geom.} is sufficient;
                 \item<3-> \footnotesize Except for \texttt{BUS} $\rightarrow$ other modalities have a big impact ($\approx$ + 10\%).
-                \item<4-> \footnotesize Only \textbf{Geom.} is even \underline{the best} for \texttt{BIT}.
-                \item<5-> \footnotesize Highly unbalanced labels are \underline{hard} to detect.
+                \item[\textcolor{orange}{$\blacktriangleright$}]<4-> \footnotesize Only \textbf{Geom.} is even \underline{the best} for \texttt{BIT}.
+                \item[\textcolor{IGNRed}{$\blacktriangleright$}]<5-> \footnotesize Highly unbalanced labels are \underline{hard} to detect.
             \end{itemize}
         \end{frame}
         \begin{frame}{Feature importance}
@@ -496,6 +496,11 @@
             \begin{figure}
                 \includestandalone[mode=buildnew, height=.7\textheight]{scalabitity_graph}
             \end{figure}
+            \only<1|handout:0>{
+                \begin{itemize}
+                    \item[] \phantom{\footnotesize Transferability: train on \underline{one} scene and test on a different \underline{one}}.
+                \end{itemize}
+            }
             \only<2|handout:0>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
                     \item \footnotesize Transferability: train on \underline{one} scene and test on a different \underline{one}.
