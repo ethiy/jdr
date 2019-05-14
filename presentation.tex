@@ -143,54 +143,38 @@
                 \begin{columns}[T]
                     \begin{column}{0.48\textwidth}
                         \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                            \item<1-> Change detection;
+                            \item<1-> Change detection [Taneja et al., 2015];
                             \item<2-> Building model correction [Kowdle et al., 2011];
-                            \item<3-> Urban reconstruction method evaluation;
-                            \item<4-> Crowd reconstruction quality assessment.
+                            \item<3-> Urban reconstruction method evaluation [Li et al., 2016];
+                            \item<4-> Crowd reconstruction quality assessment [Kovashka et al., 2016].
                         \end{itemize}
                     \end{column}
                     \begin{column}{0.48\textwidth}
                         \only<1|handout:0>{
                             \begin{figure}
                                 \begin{center}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \begin{flushright}
-                                            \includegraphics[width=.55\textwidth]{images/use/top_building_change_before}
-                                        \end{flushright}
-                                    \end{subfigure}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \begin{flushright}
-                                            \includegraphics[width=.4447\textwidth]{images/use/top_building_change_after}                                            
-                                        \end{flushright}
-                                    \end{subfigure}
+                                    \includegraphics[width=\textwidth]{images/use/change_detection_taneja}
                                 \end{center}
                             \end{figure}
                         }
                         \only<2|handout:0>{
+                            \vspace{1cm}
                             \begin{figure}
                                 \begin{center}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \includegraphics[width=\textwidth]{images/use/incorrect_model}
-                                    \end{subfigure}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \includegraphics[width=\textwidth]{images/use/incorrect_proj}
-                                    \end{subfigure}
+                                    \includegraphics[width=\textwidth]{images/use/active_learning_kowdle}
                                 \end{center}
                             \end{figure}
                         }
                         \only<3|handout:0>{
+                            \vspace{3cm}
                             \begin{figure}
                                 \begin{center}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \includegraphics[width=\textwidth]{images/difference_mesh_model/ground_truth}
-                                    \end{subfigure}
-                                    \begin{subfigure}{.8\textwidth}
-                                        \includegraphics[width=\textwidth]{images/use/bati3d_bercy}
-                                    \end{subfigure}
+                                    \includegraphics[width=\textwidth]{images/use/comparison_li}
                                 \end{center}
                             \end{figure}
                         }
                         \only<4|handout:0>{
+                            \vspace{1cm}
                             \begin{figure}
                                 \begin{center}
                                     \includegraphics[width=\textwidth]{images/use/crowdsourcing}
