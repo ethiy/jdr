@@ -540,7 +540,6 @@
                             \hline
                         \end{tabular}
                     \end{center}
-                    \caption{\scriptsize Fxy $\rightarrow$ Facet <x> <y>. Bxy $\rightarrow$ Building <x> <y>. XOS $\rightarrow$ <X> oversegmentation. XUS $\rightarrow$ <X> undersegmentation. XIT $\rightarrow$ <X> inaccurate topology. XIB $\rightarrow$ <X> imprecise border. XIG $\rightarrow$ <X> imprecise geometry.}
                 \end{table}
                 \begin{center}
                     \begin{tikzpicture}
@@ -568,7 +567,38 @@
                     \end{tikzpicture}
                 \end{center}
             }
-            \only<2-|handout:2>{
+            \only<2|handout:0>{
+                \begin{table}
+                    \scriptsize
+                    \begin{center}
+                        \begin{tabular}{| x{1.5cm}| x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} | x{.4cm} |}
+                            \hline
+                            &\texttt{BOS}  & \texttt{BUS} &\texttt{BIB} &\texttt{BIT} &\texttt{FOS}  & \texttt{FUS} &\texttt{FIB} &\texttt{FIT} &\texttt{FIG} \\
+                            \hline
+                            Elancourt $\rightarrow$ Nantes &\cellcolor{Moins1} & \cellcolor{Moins2}&\cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Zero}&\cellcolor{Plus2} Im. & \cellcolor{Moins1}&\cellcolor{Zero}\\
+                            \hline
+                            Elancourt $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Moins2}& \cellcolor{Zero}& \cellcolor{Plus1}Im.& \cellcolor{Plus1}Im.& \cellcolor{Moins1}&\cellcolor{Zero}\\
+                            \hline
+                            Nantes $\rightarrow$ Paris-13  & \cellcolor{Moins1}& \cellcolor{Moins2}& \cellcolor{IGNDarkGrey} & \cellcolor{Plus2}& \cellcolor{Zero}& \cellcolor{Plus1}& \cellcolor{Plus1}& \cellcolor{IGNDarkGrey} &\cellcolor{Zero}\\
+                            \hline
+                            Nantes $\rightarrow$ Elancourt  &\cellcolor{Plus1} & \cellcolor{Moins1}& \cellcolor{Moins1}&\cellcolor{Plus1}All & \cellcolor{Zero}& \cellcolor{Moins2}&\cellcolor{Moins1}Im. &\cellcolor{Plus1}Im. &\cellcolor{Zero}\\
+                            \hline
+                            Paris-13 $\rightarrow$ Nantes  &\cellcolor{Moins2} & \cellcolor{Moins1}& \cellcolor{IGNDarkGrey} & \cellcolor{Plus1}&\cellcolor{Zero} & \cellcolor{Moins3}& \cellcolor{Zero}& \cellcolor{IGNDarkGrey} & \cellcolor{Moins1} Hei.\\
+                            \hline
+                            Paris-13 $\rightarrow$ Elancourt &\cellcolor{Zero} &\cellcolor{Moins1} & \cellcolor{Plus1}Im. & \cellcolor{Zero}& \cellcolor{Zero}& \cellcolor{Moins4}& \cellcolor{Moins2}Im. & \cellcolor{IGNDarkGrey} & \cellcolor{Zero}\\
+                            \hline
+                        \end{tabular}
+                    \end{center}
+                \end{table}
+                \begin{center}
+                    \footnotesize \underline{Reminder:}\\
+                    \scriptsize (F || B)XY $\rightarrow$ (Facet || Building) <X> <Y>.\\
+                    X(O || U)S $\rightarrow$ <X> (Over || Under) Segmentation.\\
+                    XIT $\rightarrow$ <X> Inaccurate Topology.\\
+                    XI(B || G) $\rightarrow$ <X> Imprecise (Borders || Geometry).
+                \end{center}
+            }
+            \only<3-|handout:2>{
                 \begin{table}
                     \scriptsize
                     \begin{center}
@@ -593,8 +623,9 @@
                     \end{center}
                 \end{table}
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}]
-                    \item<2-> \footnotesize Only 8/24 of \texttt{Building errors} transferability cases are \textcolor{IGNGreen}{positive}.
-                    \item<3-> \footnotesize \texttt{Facets errors} are more transferable: 19/30 are \textcolor{IGNGreen}{positive}.
+                    \item<3-> \footnotesize Only 8/24 of \texttt{Building errors} transferability cases are \textcolor{IGNGreen}{positive}.
+                    \item<4-> \footnotesize \texttt{Facets errors} are more transferable: 19/30 are \textcolor{IGNGreen}{positive}.
+                    \item<5-> \footnotesize Additional modalities play a \underline{critical role} in error prediction.
                 \end{itemize}
             }
         \end{frame}
@@ -664,6 +695,7 @@
                     \item<2-> \footnotesize Only 3/12 of \texttt{Building errors} generalization cases are \textcolor{IGNGreen}{positive}.
                     \item<3-> \footnotesize \texttt{Facets errors} are more generalizable: 7/15 are \textcolor{IGNGreen}{positive}.
                     \item<4-> \footnotesize More diverse training data \underline{averages out} results.
+                    \item<5-> \footnotesize As before, extrinsic features are \underline{instrumental}.
                 \end{itemize}
             }
         \end{frame}
