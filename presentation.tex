@@ -209,10 +209,23 @@
     \section{Methodology}
             \begin{frame}{Main ideas behind our approach}
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                    \item<1-> Compile errors that affect building models in a taxonomy;
-                    \item<2-> Evaluation at building level $\Longrightarrow$ formulated as a supervised classification problem;
-                    \item<3-> Study in a \textbf{2.5D overhead (aerial)} modeling setting.
+                    \item<1-> \underline{Compile} errors that affect building models in a \underline{taxonomy};
+                    \item<2-> Evaluation at \underline{building level} $\longrightarrow$ formulated as a \underline{supervised} classification problem;
+                    \item<3-> Study in a \underline{2.5D overhead (aerial)} modeling setting.
                 \end{itemize}
+                \uncover<3->{
+                    \begin{figure}
+                        \centering
+                        \begin{subfigure}{.48\textwidth}
+                            \centering
+                            \includegraphics[height=.4\textheight]{images/image_kind/aerial}
+                        \end{subfigure}
+                        \begin{subfigure}{.48\textwidth}
+                            \centering
+                            \includegraphics[height=.4\textheight]{images/image_kind/no-stereopolis}
+                        \end{subfigure}
+                    \end{figure}
+                }
             \end{frame}
             \subsection{Error taxonomy}
             \begin{frame}{Taxonomy structure}
