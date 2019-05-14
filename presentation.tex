@@ -1,4 +1,4 @@
-\documentclass[10pt, export, handout]{beamer}
+\documentclass[10pt, export]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -58,7 +58,7 @@
         maxnames=2,
         hyperref=true,
         natbib=false,
-        abbreviate=true,
+        abbreviate=false,
         doi=false,
         isbn=false,
         url=false
@@ -78,7 +78,7 @@
 
 \title{Reconstructed 3D building model evaluation}
 \subtitle{the forgotten step}
-\date{\tiny\DTMdisplaydate{2019}{4}{19}{5}}
+\date{\tiny \today} % \DTMdisplaydate{2019}{4}{19}{5}
 \author{\scriptsize \underline{\textbf{Oussama Ennafii}} \inst{1, 2}, Arnaud Le Bris \inst{1}, Cl\'ement Mallet \inst{1}, Florent Lafarge \inst{2}}
 \institute{\scriptsize \inst{1} Univ. Paris Est, LaSTIG STRUDEL, IGN, ENSG\\ \scriptsize \inst{2} Inria, TITANE}
 
@@ -87,36 +87,16 @@
         \titlepage{}
     \end{frame}
 
-    \section{Introduction}
-        \begin{frame}{Context: 3D model vs. 3D mesh}
-            \begin{figure}
-                \begin{center}
-                    \begin{subfigure}{\textwidth}
-                        \begin{center}
-                            \includegraphics[height=.28\textheight]{images/difference_mesh_model/bercy_building_mesh_1_e5}
-                            \caption{\underline{3D mesh} of a building surface ($\approx$ \num[output-exponent-marker = \text{e}]{1e5} triangles).}
-                        \end{center}
-                    \end{subfigure}
-                    \\
-                    \begin{subfigure}{\textwidth}
-                        \begin{center}
-                            \includestandalone[mode=buildnew, height=.28\textheight]{ground_truth_model}
-                            \caption{Building \underline{3D polyhedral model} ($\approx$ 800 facets).}
-                        \end{center}
-                    \end{subfigure}
-                    \caption{Different model schemes of a building ($\approx$ \SI{139 x 71 x 23}{\metre}).}
-                \end{center}
-            \end{figure}
-        \end{frame}
+    \section{Introduction}        
         \begin{frame}{Motivation}
             \only<1-4|handout:1>{
                 \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
-                    \item<1-> Automatic urban modeling: an \underline{active} research area \footfullcite{Musialski2012};
-                    \item<2-> Results \textcolor{IGNGreen}{seamless} but \textcolor{IGNRed}{lack generality} and \textcolor{IGNRed}{often erroneous} \footfullcite{rottensteiner2014results};
+                    \item<1-> Automatic urban modeling: an \underline{active} research area \cite{Musialski2012};
+                    \item<2-> Results \textcolor{IGNGreen}{seamless} but \textcolor{IGNRed}{lack generality} and \textcolor{IGNRed}{often erroneous} \cite{rottensteiner2014results};
                     \begin{itemize}[label=$\longrightarrow$]
                         \item<3-> labourious manual corrections: $\approx$ \SI{2}{\hour\per\km\squared} per expert.
                     \end{itemize}
-                    \item<4-> Urban 3D model semantic diagnostic \textcolor{IGNRed}{not well studied} \footfullcite{boudet2006supervised}\footfullcite{Michelin2013};
+                    \item<4-> Urban 3D model semantic diagnostic \textcolor{IGNRed}{not well studied} \cite{boudet2006supervised, Michelin2013};
                 \end{itemize}
             }
             \only<5-|handout:2>{
@@ -130,13 +110,41 @@
                 \end{itemize}
             }
         \end{frame}
+        \begin{frame}{3D representation of buildings}
+            \begin{figure}
+                \begin{center}
+                    \includestandalone[mode=buildnew, width=.9\textwidth]{building_models-manhattan}
+                \end{center}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{3D representation of buildings}
+            \begin{figure}
+                \begin{center}
+                    \includestandalone[mode=buildnew, width=.9\textwidth]{building_models-piecewise}
+                \end{center}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{3D representation of buildings}
+            \begin{figure}
+                \begin{center}
+                    \includestandalone[mode=buildnew, width=.9\textwidth]{building_models-grammar}
+                \end{center}
+            \end{figure}
+        \end{frame}
+        \begin{frame}{3D representation of buildings}
+            \begin{figure}
+                \begin{center}
+                    \includestandalone[mode=buildnew, width=.9\textwidth]{building_models-all}
+                \end{center}
+            \end{figure}
+        \end{frame}
         \begin{frame}{Potential use}
             \begin{minipage}[0.2\textheight]{\textwidth}
                 \begin{columns}[T]
                     \begin{column}{0.48\textwidth}
                         \begin{itemize}[label=$\blacktriangleright$, font=\color{IGNGreen}, itemsep=2em]
                             \item<1-> Change detection;
-                            \item<2-> Urban models correction;
+                            \item<2-> Building model correction [Kowdle et al., 2011];
                             \item<3-> Urban reconstruction method evaluation;
                             \item<4-> Crowd reconstruction quality assessment.
                         \end{itemize}
@@ -192,6 +200,26 @@
                     \end{column}
                 \end{columns}
             \end{minipage}
+        \end{frame}
+        \begin{frame}{Naming convention: 3D model vs. 3D mesh}
+            \begin{figure}
+                \begin{center}
+                    \begin{subfigure}{\textwidth}
+                        \begin{center}
+                            \includegraphics[height=.28\textheight]{images/difference_mesh_model/bercy_building_mesh_1_e5}
+                            \caption{\underline{3D mesh} of a building surface ($\approx$ \num[output-exponent-marker = \text{e}]{1e5} triangles).}
+                        \end{center}
+                    \end{subfigure}
+                    \\
+                    \begin{subfigure}{\textwidth}
+                        \begin{center}
+                            \includestandalone[mode=buildnew, height=.28\textheight]{ground_truth_model}
+                            \caption{Building \underline{3D polyhedral model} ($\approx$ 800 facets).}
+                        \end{center}
+                    \end{subfigure}
+                    \caption{Different model schemes of a building ($\approx$ \SI{139 x 71 x 23}{\metre}).}
+                \end{center}
+            \end{figure}
         \end{frame}
 
     \section{Methodology}
